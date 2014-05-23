@@ -6,4 +6,5 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^notes/', include('notes.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^comments/', include('django_comments.urls')),
 )

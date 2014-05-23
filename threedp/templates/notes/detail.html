@@ -1,6 +1,44 @@
-{{ note.subject }}<br>
+{% extends "base.html" %}
+
+<!-- {{ item.subject }}<br>
 {{ note.description }}<br>
 Created by {{ user.first_name }} {{ user.last_name }}
 {{ note.created }}<br>
 Urgent? {{ note.urgent }}<br>
-Resolved? {{ note.resolved }}
+Resolved? {{ note.resolved }} -->
+
+{% block content %}
+	<a href="{% url 'notes.views.note_edit' item.id %}"><strong>Message #{{ item.id }}</strong></a><br>
+	<strong>Subject</strong>: {{ item.subject}}<br>
+	<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
+	<strong>Posted on</strong>: {{ item.created|date:" l, M d, Y" }}<br>
+	<strong>Resolved?</strong>: 
+			{% if item.resolved %}
+				Yes
+			{% else %}
+				No
+			{% endif %}
+			<br>
+	<strong>Urgent?</strong>: 
+			{% if item.urgent %}
+				Yes
+			{% else %}
+				No
+			{% endif %}
+			<br>	
+	<strong>Message</strong>: {{ item.description|linebreaks }}<br>
+	<hr>
+
+{% for u in update %}
+	<strong>{{ u.subject }}</strong></br>
+	<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
+	<strong>Posted on</strong>: {{ u.created|date:" l, M d, Y" }}<br>
+	<strong>Message</strong>: {{ u.description|linebreaks }}<br>
+{% endfor %}
+
+{% block add_update %}
+	{% include "notes/add_update.html" %}
+{% endblock add_update%}
+{% endblock content %}
+
+

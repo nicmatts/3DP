@@ -12,3 +12,12 @@ class Note(models.Model):
 
 	def __unicode__(self):
 		return self.subject
+
+class Update(models.Model):
+	subject = models.CharField(max_length = 200)
+	description = models.TextField(blank=True)
+	created = models.DateTimeField(auto_now_add=True, auto_now=False)
+	note = models.ForeignKey(Note)
+
+	def __unicode__(self):
+		return self.subject
