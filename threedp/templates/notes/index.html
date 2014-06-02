@@ -1,6 +1,61 @@
 {% extends "base.html" %}
 
+
+{% block title %}Message Center{% endblock %}
+	<h1>Message Center</h1>
 {% block content %}
-<h1>Test</h1>
-{{ all_notes }}
+	<div class="col-md-4">
+		<h2>All notes</h2>
+		{% if user.is_authenticated %}
+			{% for note in all_notes%}
+	 				<a href="{% url 'note_detail' note.id %}"><strong>Message #{{ note.id }}</strong></a><br>
+					<strong>Subject</strong>: {{ note.subject}}<br>
+					<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
+					<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
+					<strong>Urgent?</strong>: 
+							{% if note.urgent %}
+								Yes
+							{% else %}
+								No
+							{% endif %}
+							<br>
+					<strong>Resolved?</strong>: 
+							{% if note.resolved %}
+								Yes
+							{% else %}
+								No
+							{% endif %}
+							<br>				
+					<strong>Message</strong>: {{ note.description|linebreaks }}<br>
+					<hr>
+	 		{% endfor %}
+		{% else %}
+			<p>Please <a href="{% url 'login'%}">log in to view messages</a>.
+		{% endif %}
+	</div>
+
+	<div class="col-md-4">
+		<!--{% include 'notes/urgent.html' %} -->
+	{% for note in urgent_notes %}
+		<a href="{% url 'note_detail' note.id %}"><strong>Message #{{ note.id }}</strong></a><br>
+				<strong>Subject</strong>: {{ note.subject}}<br>
+				<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
+				<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
+				<strong>Urgent?</strong>: 
+						{% if note.urgent %}
+							Yes
+						{% else %}
+							No
+						{% endif %}
+						<br>				
+				<strong>Message</strong>: {{ note.description|linebreaks }}<br>
+				<hr>			
+	{% endfor %}
+	</div>
+
+	<div class="col-md-4">
+		{% include 'notes/unresolved.html' %}
+	</div>
+
+
 {% endblock %}

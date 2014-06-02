@@ -1,5 +1,28 @@
-{{ unresolved_notes }}
+{% extends "base.html" %}
 
-{% for note in notes %}
-	{{ note.subject}}
+{% block title %}Unresolved Notes{% endblock %}
+
+{% block content %}
+<div class="page-header">
+	<h1><span class="label label-primary">Unresolved Notes</span></h1>
+</div>
+{% if user.is_authenticated %}
+{% for note in unresolved_notes %}
+	<a href="{% url 'note_detail' note.id %}"><strong>Message #{{ note.id }}</strong></a><br>
+			<strong>Subject</strong>: {{ note.subject}}<br>
+			<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
+			<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
+			<strong>Urgent?</strong>: 
+					{% if note.urgent %}
+						Yes
+					{% else %}
+						No
+					{% endif %}
+					<br>	
+			<strong>Message</strong>: {{ note.description|linebreaks }}<br>
+			<hr>					
 {% endfor %}
+{% else %}
+<p>Please <a href="{% url 'login'%}">log in to view messages</a>.
+{% endif %}
+{% endblock %}

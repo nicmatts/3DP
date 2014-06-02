@@ -1,4 +1,25 @@
-<h1>Urgent</h1>
-{% for note in urgent_notes %}
-	{{ note.subject }}
-{% endfor %}
+{% extends "base.html" %}
+{% block content %}
+<div class="page-header">
+	<h1><span class="label label-danger">Urgent Notes</span></h1>
+</div>
+{% if user.is_authenticated %}
+	{% for note in urgent_notes %}
+		<a href="{% url 'note_detail' note.id %}"><strong>Message #{{ note.id }}</strong></a><br>
+				<strong>Subject</strong>: {{ note.subject}}<br>
+				<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
+				<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
+				<strong>Urgent?</strong>: 
+						{% if note.urgent %}
+							Yes
+						{% else %}
+							No
+						{% endif %}
+						<br>				
+				<strong>Message</strong>: {{ note.description|linebreaks }}<br>
+				<hr>			
+	{% endfor %}
+{% else %}
+	<p>Please <a href="{% url 'login'%}">log in to view messages</a>.
+{% endif %}
+{% endblock %}

@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Note(models.Model):
+class Invoice(models.Model):
 	STATUS = (
 		('student', 'student'),
 		('faculty', 'faculty'),
@@ -19,6 +19,13 @@ class Note(models.Model):
     	('completed', 'completed')
     )
 
+	DEPARTMENT = (
+    	('ART', 'Art'),
+    	('CHEM', 'Chemistry'),
+    	('MECHENG', 'Mechanical Engineering'),
+    	('ZOO', 'ZOOLOGY')
+    )
+
 	created = models.DateTimeField(auto_now_add=True, auto_now=False)
 	updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 	customer_first_name = models.CharField(max_length=20)
@@ -26,8 +33,7 @@ class Note(models.Model):
 	customer_email = models.EmailField()
 	customer_phone = models.CharField(max_length=20)
 	customer_status = models.CharField(max_length=10, choices=STATUS)
-	#add department choice list
-	customer_department = models.CharField(max_length=200, blank=True)
+	customer_department = models.CharField(max_length=10, choices=DEPARTMENT)
 	customer_filename = models.CharField(max_length=200, blank=True)
 	customer_purpose = models.CharField(max_length=10, choices=PURPOSE)
 
@@ -42,6 +48,10 @@ class Note(models.Model):
 	def __unicode__(self):
 		return self.id, self.filename
 
-	def send_email(self):
-		return self.job_cost
+	#def send_email(self):
+		#return self.job_cost
 		#add method for sending email
+
+
+	#def print_invoice(self):
+		#print invoice

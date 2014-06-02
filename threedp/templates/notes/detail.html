@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load bootstrap3 %}
 
 <!-- {{ item.subject }}<br>
 {{ note.description }}<br>
@@ -8,6 +9,7 @@ Urgent? {{ note.urgent }}<br>
 Resolved? {{ note.resolved }} -->
 
 {% block content %}
+	<div class="col-md-3">
 	<a href="{% url 'notes.views.note_edit' item.id %}"><strong>Message #{{ item.id }}</strong></a><br>
 	<strong>Subject</strong>: {{ item.subject}}<br>
 	<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
@@ -36,9 +38,8 @@ Resolved? {{ note.resolved }} -->
 	<strong>Message</strong>: {{ u.description|linebreaks }}<br>
 {% endfor %}
 
-{% block add_update %}
-	{% include "notes/add_update.html" %}
-{% endblock add_update%}
+<a href="{% url 'notes.views.add_update' item.id %}">Add a comment</a>
+</div>
 {% endblock content %}
 
 
