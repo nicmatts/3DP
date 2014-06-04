@@ -3,46 +3,51 @@
 {% block title %}3DP | Home{% endblock %}
 
 {% block content %}
-
-<div class="row">
-	<div class="col-md-8">
-	</div>
-	<div class="col-md-4">
+<div class="col-md-8 jumbotron">
+	<h2>Start a new print job</h2>
+</div>
+	
+<div class="col-md-4">
 	<h2><span class="glyphicon glyphicon-tasks"></span> Queued Jobs</h2>
+		{% for job in queued_invoices %}
+			{% if job.filename %}
+				Job #{{ job.id }}: {{ job.filename }}
+			{% else %}
+				Job #{{ job.id }}: {{ job.customer_filename }}
+			{% endif %}
+		{% endfor %}
+			<br>
 
 	<h2><span class="glyphicon glyphicon-exclamation-sign"></span> Urgent Notes</h2>
-	{% for note in urgent_notes %}
-		<a href="{% url 'note_detail' note.id %}"><strong>Message #{{ note.id }}</strong></a><br>
-				<strong>Subject</strong>: {{ note.subject}}<br>
-				<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
-				<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
-				<strong>Urgent?</strong>: 
-						{% if note.urgent %}
-							Yes
-						{% else %}
-							No
-						{% endif %}
-						<br>				
-				<strong>Message</strong>: {{ note.description|linebreaks }}<br>
-				<hr>			
-	{% endfor %}
+		{% for note in urgent_notes %}
+			<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject}}</strong></a><br>
+			<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
+			<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
+			<strong>Urgent?</strong>: 
+				{% if note.urgent %}
+					Yes
+				{% else %}
+					No
+				{% endif %}
+				<br>				
+			<strong>Message</strong>: {{ note.description|linebreaks }}<br>
+			<hr>			
+		{% endfor %}
 
 	<h2><span class="glyphicon glyphicon-flag"></span> Unresolved Notes</h2>
-	{% for note in unresolved_notes %}
-		<a href="{% url 'note_detail' note.id %}"><strong>Message #{{ note.id }}</strong></a><br>
-				<strong>Subject</strong>: {{ note.subject}}<br>
-				<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
-				<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
-				<strong>Urgent?</strong>: 
-						{% if note.urgent %}
-							Yes
-						{% else %}
-							No
-						{% endif %}
-						<br>				
-				<strong>Message</strong>: {{ note.description|linebreaks }}<br>
-				<hr>			
-	{% endfor %}
-	</div>
+		{% for note in unresolved_notes %}
+			<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject }}</strong></a><br>
+			<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
+			<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
+			<strong>Urgent?</strong>: 
+				{% if note.urgent %}
+					Yes
+				{% else %}
+					No
+				{% endif %}
+				<br>				
+			<strong>Message</strong>: {{ note.description|linebreaks }}<br>
+			<hr>			
+		{% endfor %}
 </div>
 {% endblock %}

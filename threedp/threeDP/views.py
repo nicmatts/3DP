@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response, render
 
 from .forms import LoginForm
 from notes.models import Note
+from invoices.models import Invoice
 
 def login_page(request):
 	message = None
@@ -31,6 +32,7 @@ def index(request):
     all_notes = Note.all_notes.all()
     unresolved_notes = Note.unresolved_notes.all()
     urgent_notes = Note.urgent_notes.all()
-    return render(request, 'index.html', {'all_notes': all_notes, 'unresolved_notes': unresolved_notes, 'urgent_notes': urgent_notes})
+    queued_invoices = Invoice.queued_invoices.all()
+    return render(request, 'index.html', {'all_notes': all_notes, 'unresolved_notes': unresolved_notes, 'urgent_notes': urgent_notes, 'queued_invoices': queued_invoices})
 
 
