@@ -15,7 +15,7 @@ def index(request):
     queued_jobs_count = queued_jobs.count()
     running_jobs = Invoice.running_invoices.all()
     running_jobs_count = running_jobs.count()
-    return render(request, 'invoices/index.html', {'all_jobs': all_jobs, 'queued_jobs': queued_jobs, 'running_jobs': running_jobs, 'queued_jobs_count': queued_jobs_count, 'running_jobs_count': running_jobs_count})
+    return render_to_response('invoices/index.html', {'all_jobs': all_jobs, 'queued_jobs': queued_jobs, 'running_jobs': running_jobs, 'queued_jobs_count': queued_jobs_count, 'running_jobs_count': running_jobs_count}, context_instance=RequestContext(request))
 
 
 @login_required
@@ -29,7 +29,19 @@ def add_job(request):
 		form = InvoiceForm()
 	return render(request, 'invoices/add_job.html', {'form': form})
 
-# @login_required
-# def job_detail(request, invoice_id):
-#     job = get_object_or_404(Invoice, pk=invoice_id)
-#     return render(request, 'invoices/detail.html', {'job': job})
+@login_required
+def job_detail(request, invoice_id):
+    job = get_object_or_404(Invoice, pk=invoice_id)
+    return render_to_response('invoices/job_detail.html', {'job': job}, context_instance=RequestContext(request))
+
+@login_required
+def job_edit(request, invoice_id):
+	invoice = get_object_or_404(Invoice, pk=invoice_id)
+	if request.method=='POST':
+		form = InvoiceForm(request.POST, instance=invoice)
+		if form.is_valid():
+			form.save()
+			return redirect('job_detail', invoice_id)
+	else:
+		form = InvoiceForm(instance=invoice)
+	return render_to_response('invoices/job_edit.html', {'form': form}, context_instance=RequestContext(request))

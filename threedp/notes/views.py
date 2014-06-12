@@ -19,7 +19,7 @@ def index(request):
     all_notes = Note.all_notes.all()
     unresolved_notes = Note.unresolved_notes.all()
     urgent_notes = Note.urgent_notes.all()
-    return render(request, 'notes/index.html', {'all_notes': all_notes, 'unresolved_notes': unresolved_notes, 'urgent_notes': urgent_notes})
+    return render_to_response('notes/index.html', {'all_notes': all_notes, 'unresolved_notes': unresolved_notes, 'urgent_notes': urgent_notes}, context_instance=RequestContext(request))
 
 # def index(request):
 # 	if (re.match("/notes/urgent/", request.path)):
@@ -38,7 +38,7 @@ def add_note(request):
 		form = NoteForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('index')
+			return redirect('home')
 	else:
 		form = NoteForm()
 	return render(request, 'notes/add_note.html', {'form': form})
@@ -50,15 +50,15 @@ def note_detail(request, note_id):
     print update
     return render(request, 'notes/detail.html', {'item': item, 'update': update})
 
-def note_urgent(request):
-	urgent_notes = Note.urgent_notes.all()
-	context = {'urgent_notes': urgent_notes}
-	return render(request, 'notes/urgent.html', context)
+# def note_urgent(request):
+# 	urgent_notes = Note.urgent_notes.all()
+# 	context = {'urgent_notes': urgent_notes}
+# 	return render(request, 'notes/urgent.html', context)
 
-def note_unresolved(request):
-	unresolved_notes = Note.unresolved_notes.all()
-	context = {'unresolved_notes': unresolved_notes}
-	return render(request, 'notes/unresolved.html', context)
+# def note_unresolved(request):
+# 	unresolved_notes = Note.unresolved_notes.all()
+# 	context = {'unresolved_notes': unresolved_notes}
+# 	return render(request, 'notes/unresolved.html', context)
 
 def note_edit(request, note_id):
 	note = get_object_or_404(Note, pk=note_id)

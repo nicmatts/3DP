@@ -1,0 +1,41 @@
+/******** front page styling **********/
+a.navbar-brand {
+	font-size: 36px;
+	margin-left: 40px;
+}
+
+.navbar-inverse .navbar-nav>li>a{
+	color: #e6e6e6;
+}
+
+.navbar-text.navbar-right:last-child {
+	margin-right: 70px;
+}
+
+.container .jumbotron {
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 0;
+}
+
+.jumbotron p {
+	font-size: 18px;
+}
+
+h4.warning {
+margin: 20px 0;
+}
+
+.front-page-label {
+	width: 220px;
+}
+
+.front-right-sidebar {
+	background: #F7F5F5;
+	border-radius: 6px;
+	padding: 5px 20px 20px 20px;
+	margin-bottom: 20px;
+}
+
+
+

@@ -1,53 +1,93 @@
 {% extends 'base.html' %}
+{% load bootstrap3 %}
 
-{% block title %}3DP | Home{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="col-md-8 jumbotron">
-	<h2>Start a new print job</h2>
+<div class="col-md-7 jumbotron">
+	<h2><a href="{% url 'add_job' %}"><span class="glyphicon glyphicon-plus"></span> Start a new print job</a></h2>
+	<h4 class="warning"><span class="label label-danger">All fields are required</span></h4>
+	<form action="/jobs/add/" method="post">{% csrf_token %}
+		<p><label for="id_customer_first_name" class="front-page-label">Customer first name:</label>
+		    {{ form.customer_first_name }}
+		<p><label for="id_customer_last_name" class="front-page-label">Customer last name:</label>
+		    {{ form.customer_last_name }}
+		<p><label for="id_customer_email" class="front-page-label">Customer email:</label>
+		    {{ form.customer_email }}    
+		<p><label for="id_customer_last_name" class="front-page-label">Customer phone:</label>
+		    {{ form.customer_phone }}
+		<p><label for="id_customer_filename" class="front-page-label">Customer file name:</label>
+		    {{ form.customer_filename }}
+		<p><label for="id_customer_purpose" class="front-page-label">Purpose:</label>
+		    {{ form.customer_purpose }}
+		<p><label for="id_customer_department" class="front-page-label">Department:</label>
+		    {{ form.customer_department }}
+		<p><label for="id_customer_status" class="front-page-label">Customer status:</label>
+		    {{ form.customer_status }}
+		<p><label for="id_job_state" class="front-page-label">Job state:</label>
+			{{ form.job_state }}</p>
+		<input type="submit" value="Submit" class="btn btn-primary"/>
+		</form>
 </div>
 	
-<div class="col-md-4">
-	<h2><span class="glyphicon glyphicon-tasks"></span> Queued Jobs</h2>
-		{% for job in queued_invoices %}
-			{% if job.filename %}
-				Job #{{ job.id }}: {{ job.filename }}
-			{% else %}
-				Job #{{ job.id }}: {{ job.customer_filename }}
-			{% endif %}
-		{% endfor %}
-			<br>
-
-	<h2><span class="glyphicon glyphicon-exclamation-sign"></span> Urgent Notes</h2>
-		{% for note in urgent_notes %}
-			<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject}}</strong></a><br>
-			<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
-			<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
-			<strong>Urgent?</strong>: 
-				{% if note.urgent %}
-					Yes
+<div class="col-md-4 col-md-offset-1">
+	<div class="front-right-sidebar">
+		<h2><span class="glyphicon glyphicon-list"></span> Queued Jobs</h2>
+			{% for job in queued_invoices %}
+				{% if job.filename %}
+					<a href="{% url 'job_detail' job.id %}">Job #{{ job.id }}: {{ job.filename }}</a><br>
 				{% else %}
-					No
+					<a href="{% url 'job_detail' job.id %}">Job #{{ job.id }}: {{ job.customer_filename }}</a><br>
 				{% endif %}
-				<br>				
-			<strong>Message</strong>: {{ note.description|linebreaks }}<br>
-			<hr>			
-		{% endfor %}
+			{% endfor %}
+	</div>
 
-	<h2><span class="glyphicon glyphicon-flag"></span> Unresolved Notes</h2>
-		{% for note in unresolved_notes %}
-			<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject }}</strong></a><br>
-			<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
-			<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
-			<strong>Urgent?</strong>: 
-				{% if note.urgent %}
-					Yes
+	<div class="front-right-sidebar">
+		<h2><span class="glyphicon glyphicon-play"></span> Running Jobs</h2>
+			{% for job in running_invoices %}
+				{% if job.filename %}
+					<a href="{% url 'job_detail' job.id %}">Job #{{ job.id }}: {{ job.filename }}</a><br>
 				{% else %}
-					No
+					<a href="{% url 'job_detail' job.id %}">Job #{{ job.id }}: {{ job.customer_filename }}</a><br>
 				{% endif %}
-				<br>				
-			<strong>Message</strong>: {{ note.description|linebreaks }}<br>
-			<hr>			
-		{% endfor %}
+			{% endfor %}
+	</div>
+
+	<div class="front-right-sidebar">
+		<h2><span class="glyphicon glyphicon-exclamation-sign"></span> Urgent Notes</h2>
+			{% for note in urgent_notes %}
+				<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject}}</strong></a><br>
+				<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
+				<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
+				<strong>Urgent?</strong>: 
+					{% if note.urgent %}
+						Yes
+					{% else %}
+						No
+					{% endif %}
+					<br>				
+				<strong>Message</strong>: {{ note.description|linebreaks }}		
+			{% endfor %}
+	</div>
+
+	<div class="front-right-sidebar">
+		<h2><span class="glyphicon glyphicon-flag"></span> Unresolved Notes</h2>
+			{% for note in unresolved_notes %}
+				{% if not note.urgent %}
+					<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject }}</strong></a><br>
+					<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
+					<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
+					<strong>Urgent?</strong>: 
+						{% if note.urgent %}
+							Yes
+						{% else %}
+							No
+						{% endif %}
+						<br>				
+					<strong>Message</strong>: {{ note.description|linebreaks }}<br>
+					<hr>		
+				{% endif %}	
+			{% endfor %}
+	</div>
 </div>
 {% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+
+{% block content %}
+	<div class="col-md-12">
+		<h1><a href="{% url 'invoices.views.job_edit' job.id %}">Job #{{ job.id }}: 
+			{% if job.filename %}
+				{{ job.filename }}
+			{% else %}
+				{{ job.customer_filename }}
+			{% endif %}
+		</a>
+		</h1>
+		<h2>
+			{% if job.job_state == "queued" %}
+				<span class="label label-warning state">{{ job.job_state }}</span>
+			{% elif job.job_state == "running" %}
+				<span class="label label-info state">{{ job.job_state }}</span>
+			{% else %}
+				<span class="label label-success state">{{ job.job_state }}</span>
+			{% endif %}
+		</h2>
+
+		<div class="row">
+			<div class="col-md-6">
+				<h3>Customer Information</h3>
+				{{ job.customer_first_name }} {{ job.customer_last_name }}</br>
+				{{ job.customer_email }}</br>
+				{{ job.customer_phone }}</br>
+				<strong>Customer file name: </strong>{{ job.customer_filename }}<br>
+				<strong>Status: </strong>{{ job.customer_status }}<br>
+				<strong>Purpose: </strong> {{ job.customer_purpose }}<br>
+				<strong>Department: </strong>{{ job.customer_department }} <br>
+			</div>
+			
+			<div class="col-md-6">
+				<h3>Job Information</h3>
+				<strong>Created: </strong>{{ job.created }}<br>
+				<strong>SD card number: </strong>{{ job.sd_card_number }}<br>
+				<strong>File name: </strong>{{ job.filename }}<br>
+				<strong> Description: </strong>{{ job.description }}<br>
+				<strong>Estimated time: </strong>{{ job.estimated_time }}<br>
+				<strong>Actual time: </strong>{{ job.actual_time }}<br>
+				<strong>Job cost: </strong>{{ job.job_cost }}
+			</div>
+		</div>
+	
+	</div>
+{% endblock content %}
+
+

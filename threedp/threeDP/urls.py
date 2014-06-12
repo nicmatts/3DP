@@ -1,4 +1,6 @@
 from django.conf.urls import patterns, include, url
+from django.conf import settings
+from django.conf.urls.static import static
 
 from django.contrib import admin
 admin.autodiscover()
@@ -11,4 +13,4 @@ urlpatterns = patterns('',
     url(r'^comments/', include('django_comments.urls')),
     url(r'^login/$', 'threeDP.views.login_page', name='login'),
     url(r'^logout/$', 'threeDP.views.logout_view'),
-)
+) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
