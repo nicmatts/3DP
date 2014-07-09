@@ -4,7 +4,7 @@
 
 {% block content %}
 	<div class="col-md-12">
-		<h1><a href="{% url 'invoices.views.job_edit' job.id %}">Job #{{ job.id }}: 
+		<h1 class="hidden-print"><a href="{% url 'invoices.views.job_edit' job.id %}">Job #{{ job.id }}: 
 			{% if job.filename %}
 				{{ job.filename }}
 			{% else %}
@@ -12,6 +12,13 @@
 			{% endif %}
 		</a>
 		</h1>
+		<h2 class="visible-print">Job #{{ job.id }}: 
+			{% if job.filename %}
+				{{ job.filename }}
+			{% else %}
+				{{ job.customer_filename }}
+			{% endif %}
+		</h2>
 		<h2>
 			{% if job.job_state == "queued" %}
 				<span class="label label-warning state">{{ job.job_state }}</span>
@@ -26,6 +33,7 @@
 			<div class="col-md-6">
 				<h3>Customer Information</h3>
 				{{ job.customer_first_name }} {{ job.customer_last_name }}</br>
+				<p class="visible-print">Bison ID #: ___________________________</p>
 				{{ job.customer_email }}</br>
 				{{ job.customer_phone }}</br>
 				<strong>Customer file name: </strong>{{ job.customer_filename }}<br>

@@ -15,6 +15,7 @@ class UrgentNoteManager(models.Manager):
     def get_queryset(self):
         return super(UrgentNoteManager, self).get_queryset().filter(urgent=True, resolved=False)
 
+
 class Note(models.Model):
 	subject = models.CharField(max_length = 200)
 	description = models.TextField(blank=True)

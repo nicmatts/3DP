@@ -1,13 +1,15 @@
-{% block title %}Update a message{% endblock %}
+{% extends 'base.html' %}
+{% load bootstrap3 %}
 
-{% block add_update %}
-<form action="" method="post">{% csrf_token %}
-    {% for field in form %}
-        <div class="fieldWrapper">
-            {{ field.errors }}
-            {{ field.label_tag }} {{ field }}
-        </div>
-    {% endfor %}
-    <p><input type="submit" value="Send message" /></p>
-</form>
-{% endblock add_update %}
+{% block title %}Update note{% endblock %}
+
+{% block content %}
+	<div class="col-md-6">
+		<form action="" method="post">{% csrf_token %}
+				{% bootstrap_form form %}
+				{% buttons %}
+					<input type="submit" value="Submit">
+				{% endbuttons %}
+		</form>
+	</div>
+{% endblock %}

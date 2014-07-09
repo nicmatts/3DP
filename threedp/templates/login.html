@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load bootstrap3 %}
+
 {% block title %}Login{% endblock %}
+
 {% block content %}
 	<h1>Login</h1>
-	{% if message %}
-	<strong>{{ message }}</strong>
-	{% endif %}
-	<form action="" method="post">{% csrf_token %}
-		{{ form.as_p }}
-	<input type="submit" value="Log in"</input>
+	<form action="" method="post">
+		{{ form.username }}
+		<input type="submit" value="Submit"  class="btn btn-primary">
 	</form>
-{% endblock content %}
+{% endblock %}
+{% endif %}

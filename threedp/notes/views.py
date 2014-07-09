@@ -15,7 +15,7 @@ from notes.forms import	UpdateForm
 # Create your views here.
 
 @login_required
-def index(request):
+def all_notes(request):
     all_notes = Note.all_notes.all()
     unresolved_notes = Note.unresolved_notes.all()
     urgent_notes = Note.urgent_notes.all()

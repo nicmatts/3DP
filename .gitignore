@@ -1,2 +1,7 @@
 *.pyc
 *.sqlite3
+*__init__.py
+*context_processors.py
+*xupdates
+*xcomments
+threeDP/3DP

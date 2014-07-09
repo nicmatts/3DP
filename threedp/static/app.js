@@ -22,6 +22,9 @@ $( document ).ready(function() {
 			var minuteCost = (parseInt(newTime[1],10)) * 0.05;
 			//minuteCost = minuteCost.toFixed(2);
 			cost = hourCost + minuteCost;
+			if (isNaN(cost)){
+				alert("Please time enter in HH:MM format");
+			}
 			console.log(cost);
 			if (cost < 3.00){
 				cost = 3.00;
