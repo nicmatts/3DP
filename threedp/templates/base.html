@@ -32,7 +32,7 @@
 		</li> 
 	</ul>
 	{% if user.is_authenticated %}
-    	<p class="navbar-text navbar-right">Welcome, <a href="{% url 'logout' %}" class="navbar-link">{{ user.first_name }}</a></p>
+    	<p class="navbar-text navbar-right logout">Welcome, <a href="{% url 'logout' %}" class="navbar-link">{{ user.first_name }}</a></p>
 	{% endif %}
 	
 </div>
