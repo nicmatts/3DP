@@ -30,19 +30,19 @@ def login_page(request):
 
 def logout_view(request):
     logout(request)
-    return render_to_response('index.html', context_instance=RequestContext(request))
+    return redirect('home')
 
-# def add_job(request):
-# 	if request.method == 'POST':
-# 		form = InvoiceForm(request.POST)
-# 		if form.is_valid():
-# 			form.save()
-# 			return form
-# 	else:
-# 		form = InvoiceForm()
-# 	return render(request, 'invoices/add_job.html', {'form': form})
+def add_job(request):
+	if request.method == 'POST':
+		form = InvoiceForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return form
+	else:
+		form = InvoiceForm()
+	return render(request, 'invoices/add_job.html', {'form': form})
 
-@login_required
+@login_required(login_url='/accounts/login/')
 def index(request):
 	all_notes = Note.all_notes.all()
 	unresolved_notes = Note.unresolved_notes.all()

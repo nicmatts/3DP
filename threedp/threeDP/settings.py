@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'notes',
     'invoices',
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,3 +106,5 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 SITE_ID = 1
+
+LOGIN_URL = '/accounts/login/'

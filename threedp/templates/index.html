@@ -25,9 +25,13 @@
 				    {{ form.customer_department }}
 				<p><label for="id_customer_status" class="front-page-label">Customer status:</label>
 				    {{ form.customer_status }}
+				<p><label for="id_estimated_time" class="front-page-label">Estimated time:</label>
+				    {{ form.estimated_time }}
+				<p><label for="id_estimated_cost" class="front-page-label">Estimated cost:</label>
+				    {{ form.estimated_cost }}
 				<p><label for="job_state" class="front-page-label">Job state:</label>
 					{{ form.job_state }}</p>
-				<input type="submit" value="Submit" class="btn btn-primary" id="invoice-submit">
+				<input type="submit" value="Submit" class="btn btn-primary" id="invoice-submit" onclick="openWin()">
 			</form>
 		</div>
 
