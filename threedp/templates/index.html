@@ -6,6 +6,7 @@
 {% block content %}
 	<div class="col-md-7">
 		<div class="jumbotron">
+			<h3 class="no-show">NDSU Libraries 3D Printing Service</h3>
 			<h3><a href="{% url 'add_job' %}"><span class="glyphicon glyphicon-plus"></span> Start a new print job</a></h3>
 			<h4 class="warning"><span class="label label-danger">All fields are required</span></h4>
 			<form action="/jobs/add/" method="post">{% csrf_token %}
@@ -19,23 +20,25 @@
 				    {{ form.customer_phone }}
 				<p><label for="id_customer_filename" class="front-page-label">Customer file name:</label>
 				    {{ form.customer_filename }}
-				<p><label for="id_customer_purpose" class="front-page-label">Purpose:</label>
+				<p class="no-print"><label for="id_customer_purpose" class="front-page-label">Purpose:</label>
 				    {{ form.customer_purpose }}
-				<p><label for="id_customer_department" class="front-page-label">Department:</label>
+				<p class="no-print"><label for="id_customer_department" class="front-page-label">Department:</label>
 				    {{ form.customer_department }}
-				<p><label for="id_customer_status" class="front-page-label">Customer status:</label>
+				<p class="no-print"><label for="id_customer_status" class="front-page-label">Customer status:</label>
 				    {{ form.customer_status }}
 				<p><label for="id_estimated_time" class="front-page-label">Estimated time:</label>
 				    {{ form.estimated_time }}
 				<p><label for="id_estimated_cost" class="front-page-label">Estimated cost:</label>
 				    {{ form.estimated_cost }}
-				<p><label for="job_state" class="front-page-label">Job state:</label>
+				<p class="no-print"><label for="job_state" class="front-page-label">Job state:</label>
 					{{ form.job_state }}</p>
 				<input type="submit" value="Submit" class="btn btn-primary" id="invoice-submit" onclick="openWin()">
 			</form>
+
+			<div class="disclaimer">Disclaimer goes here</div>
 		</div>
 
-		<div class="jumbotron">
+		<div class="jumbotron add-note">
 			<h3><a href="{% url 'add_note' %}"><span class="glyphicon glyphicon-pencil"></span> Post a message</a></h3>
 			<form action="{% url 'add_note' %}" method="post">{% csrf_token %}
 				{% bootstrap_form note_form %}
