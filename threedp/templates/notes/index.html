@@ -4,36 +4,6 @@
 {% block title %}Message Center{% endblock %}
 	<h1>Message Center</h1>
 {% block content %}
-	<div class="col-md-4">
-		<h3><span class="glyphicon glyphicon-envelope"></span> All messages</h3>
-		{% if user.is_authenticated %}
-			{% for note in all_notes%}
-				<div class="note">
-					<a href="{% url 'note_detail' note.id %}"><strong>Message #{{ note.id }}</strong></a><br>
-					<strong>Subject</strong>: {{ note.subject}}<br>
-					<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
-					<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
-					<strong>Urgent?</strong>: 
-							{% if note.urgent %}
-								Yes
-							{% else %}
-								No
-							{% endif %}
-							<br>
-					<strong>Resolved?</strong>: 
-							{% if note.resolved %}
-								Yes
-							{% else %}
-								No
-							{% endif %}
-							<br>				
-					<strong>Message</strong>: {{ note.description|linebreaks }}
-				</div>
-	 		{% endfor %}
-		{% else %}
-			<p>Please <a href="{% url 'login'%}">log in to view messages</a>.
-		{% endif %}
-	</div>
 
 	<div class="col-md-4">
 	<h3><span class="glyphicon glyphicon-exclamation-sign"></span> Urgent messages</h3>
@@ -73,6 +43,37 @@
 			<strong>Message</strong>: {{ note.description|linebreaks }}
 		</div>		
 	{% endfor %}
+	</div>
+
+		<div class="col-md-4">
+		<h3><span class="glyphicon glyphicon-envelope"></span> All messages</h3>
+		{% if user.is_authenticated %}
+			{% for note in all_notes%}
+				<div class="note">
+					<a href="{% url 'note_detail' note.id %}"><strong>Message #{{ note.id }}</strong></a><br>
+					<strong>Subject</strong>: {{ note.subject}}<br>
+					<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
+					<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
+					<strong>Urgent?</strong>: 
+							{% if note.urgent %}
+								Yes
+							{% else %}
+								No
+							{% endif %}
+							<br>
+					<strong>Resolved?</strong>: 
+							{% if note.resolved %}
+								Yes
+							{% else %}
+								No
+							{% endif %}
+							<br>				
+					<strong>Message</strong>: {{ note.description|linebreaks }}
+				</div>
+	 		{% endfor %}
+		{% else %}
+			<p>Please <a href="{% url 'login'%}">log in to view messages</a>.
+		{% endif %}
 	</div>
 
 
