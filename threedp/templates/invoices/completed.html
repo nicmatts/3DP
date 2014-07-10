@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Completed Jobs{% endblock %}
+{% block content %}
+	<div class="jobs-page">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Completed Jobs</h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-3">
+				{% if user.is_authenticated %}
+					{% for job in completed_jobs%}
+						<div class="job-info">
+				 			<a href="{% url 'job_detail' job.id %}">Job #{{ job.id }}: 
+					 			{% if job.filename %}
+									{{ job.filename }}
+								{% else %}
+									{{ job.customer_filename }}
+								{% endif %}
+							{{ job.filename }}</a><br>
+							Customer name: {{ job.customer_first_name }} {{ job.customer_last_name }}</br>
+				 			Estimated time: {{ job.estimated_time }}<br>
+				 		</div>
+			 		{% endfor %}
+				{% else %}
+					<p>Please <a href="{% url 'login'%}">log in to view messages</a>.
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

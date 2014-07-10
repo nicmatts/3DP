@@ -85,6 +85,29 @@ body {
 		border-bottom: 1px solid #ccc;
 		margin: 15px 40px 15px 0;
 	}
+
+	/********* jobs pages **************/
+	.jobs-page {
+		margin-left: 22px;
+	}
+
+	.job-info {
+		margin-bottom: 10px;
+	}
+
+	.job-queued {
+		background-color: rgba(255, 255, 39, 0.17);
+	}
+
+	.job-running {
+		background-color: rgba(18, 185, 4, 0.11);
+	}
+
+	.job-queued, .job-running {
+		padding: 10px;
+		border-radius: 6px;
+	}
+
 }
 
 /******* styling for printed invoice *********/	

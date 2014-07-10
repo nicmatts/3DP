@@ -16,7 +16,7 @@ class RunningInvoicesManager(models.Manager):
 
 class CompletedInvoicesManager(models.Manager):
     def get_queryset(self):
-        return super(CompletedInvoicesManager, self).get_queryset().filter(job_state='completed')
+        return super(CompletedInvoicesManager, self).get_queryset().filter(job_state='completed').order_by('-created')
 
 
 class Invoice(models.Model):

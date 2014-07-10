@@ -17,6 +17,10 @@ def index(request):
     running_jobs_count = running_jobs.count()
     return render_to_response('invoices/index.html', {'all_jobs': all_jobs, 'queued_jobs': queued_jobs, 'running_jobs': running_jobs, 'queued_jobs_count': queued_jobs_count, 'running_jobs_count': running_jobs_count}, context_instance=RequestContext(request))
 
+@login_required
+def completed(request):
+	completed_jobs = Invoice.completed_invoices.all()
+	return render_to_response('invoices/completed.html', {'completed_jobs': completed_jobs}, context_instance=RequestContext(request))
 
 @login_required
 def add_job(request):
