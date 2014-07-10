@@ -11,33 +11,33 @@
 			<h4 class="warning hidden-print"><span class="label label-danger">All fields are required</span></h4>
 			<form action="/jobs/add/" method="post">{% csrf_token %}
 				<p><label for="id_customer_first_name" class="front-page-label">Customer first name:</label>
-				    {{ form.customer_first_name }}
+				    {{ form.customer_first_name }}</p>
 				<p><label for="id_customer_last_name" class="front-page-label">Customer last name:</label>
-				    {{ form.customer_last_name }}
+				    {{ form.customer_last_name }}</p>
 				<p class="no-show"><label class="front-page-label">Bison ID #:</label>
-				    {{ form.customer_first_name }}
+				    {{ form.customer_first_name }}</p>
 				<p><label for="id_customer_email" class="front-page-label">Customer email:</label>
-				    {{ form.customer_email }}    
+				    {{ form.customer_email }}</p>
 				<p><label for="id_customer_last_name" class="front-page-label">Customer phone:</label>
-				    {{ form.customer_phone }}
+				    {{ form.customer_phone }}</p>
 				<p><label for="id_customer_filename" class="front-page-label">Customer file name:</label>
-				    {{ form.customer_filename }}
+				    {{ form.customer_filename }}</p>
 				<p class="hidden-print"><label for="id_customer_purpose" class="front-page-label">Purpose:</label>
-				    {{ form.customer_purpose }}
+				    {{ form.customer_purpose }}</p>
 				<p class="hidden-print"><label for="id_customer_department" class="front-page-label">Department:</label>
-				    {{ form.customer_department }}
+				    {{ form.customer_department }}</p>
 				<p class="hidden-print"><label for="id_customer_status" class="front-page-label">Customer status:</label>
-				    {{ form.customer_status }}
+				    {{ form.customer_status }}</p>
 				<p><label for="id_estimated_time" class="front-page-label">Estimated time:</label>
-				    {{ form.estimated_time }}
+				    {{ form.estimated_time }}</p>
 				<p><label for="id_estimated_cost" class="front-page-label">Estimated cost:</label>
-				    {{ form.estimated_cost }}
+				    {{ form.estimated_cost }}</p>
 				<p class="hidden-print"><label for="job_state" class="front-page-label">Job state:</label>
 					{{ form.job_state }}</p>
 				<input type="submit" value="Submit" class="btn btn-primary hidden-print" id="invoice-submit" onclick="openWin()">
 			</form>
 
-			<div class="disclaimer visible-print">Disclaimer goes here</div>
+			{% include 'invoices/disclaimer.html' %}
 		</div>
 
 		<div class="jumbotron add-note hidden-print">
