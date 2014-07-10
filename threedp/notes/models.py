@@ -7,6 +7,10 @@ class AllNotesManager(models.Manager):
     def get_queryset(self):
         return super(AllNotesManager, self).get_queryset().all().order_by('-created')
 
+class ResolvedNotesManager(models.Manager):
+    def get_queryset(self):
+        return super(ResolvedNotesManager, self).get_queryset().filter(resolved=True).order_by('-created')
+
 class UnresolvedNoteManager(models.Manager):
     def get_queryset(self):
         return super(UnresolvedNoteManager, self).get_queryset().filter(resolved=False)
@@ -25,6 +29,7 @@ class Note(models.Model):
 	resolved = models.BooleanField()
 
 	all_notes = AllNotesManager()
+	resolved_notes = ResolvedNotesManager()
 	unresolved_notes = UnresolvedNoteManager()
 	urgent_notes = UrgentNoteManager()
 

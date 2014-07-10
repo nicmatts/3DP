@@ -4,6 +4,7 @@ from notes import views
 
 urlpatterns = patterns('',
     url(r'^$', views.all_notes, name='all_notes'),
+    url(r'^resolved', views.resolved_notes, name='resolved_notes'),
     url(r'^(?P<note_id>\d+)/$', views.note_detail, name='note_detail'),
     url(r'^(?P<note_id>\d+)/edit/$', views.note_edit, name='note_edit'),
     url(r'^add/$', views.add_note, name='add_note'),
