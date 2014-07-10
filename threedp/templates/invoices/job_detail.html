@@ -30,6 +30,7 @@
 		</h2>
 
 		<div class="row">
+			<hr>
 			<div class="col-md-6">
 				<h3>Customer Information</h3>
 				{{ job.customer_first_name }} {{ job.customer_last_name }}</br>
@@ -47,13 +48,15 @@
 				<strong>Created: </strong>{{ job.created }}<br>
 				<strong>SD card number: </strong>{{ job.sd_card_number }}<br>
 				<strong>File name: </strong>{{ job.filename }}<br>
-				<strong> Description: </strong>{{ job.description }}<br>
+				<strong>Description: </strong>{{ job.description }}<br>
 				<strong>Estimated time: </strong>{{ job.estimated_time }}<br>
+				<strong>Estimated cost: </strong>{{ job.estimated_cost }}<br>
 				<strong>Actual time: </strong>{{ job.actual_time }}<br>
 				<strong>Job cost: </strong>{{ job.job_cost }}
 			</div>
 		</div>
-	
+		<hr>
+		<button class="btn btn-primary" onClick="window.print()">Print invoice</button>
 	</div>
 {% endblock content %}
 

@@ -1,3 +1,7 @@
+body {
+	font-family: 'oxygen', 'tahoma', sans-serif;
+}
+
 /******** front page styling **********/
 
 @media screen{
@@ -85,9 +89,9 @@
 
 /******* styling for printed invoice *********/	
 @media print {
-  .front-right-sidebar, .add-note, .btn, .no-print, h3, h4 {
+/*  .front-right-sidebar, .add-note, .btn, .no-print, h3, h4 {
   	display: none;
-  }
+  }*/
 
   .jumbotron .front-page-label, input{
   	font-size: 14px;
