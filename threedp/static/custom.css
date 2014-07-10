@@ -2,6 +2,10 @@ body {
 	font-family: 'oxygen', 'tahoma', sans-serif;
 }
 
+.container {
+	margin-left: 70px;
+}
+
 /******** front page styling **********/
 
 @media screen{
@@ -87,10 +91,6 @@ body {
 	}
 
 	/********* jobs pages **************/
-	.jobs-page {
-		margin-left: 22px;
-	}
-
 	.job-info {
 		margin-bottom: 10px;
 	}
@@ -105,6 +105,13 @@ body {
 
 	.job-queued, .job-running {
 		padding: 10px;
+		border-radius: 6px;
+	}
+
+	fieldset.required {
+		padding: 0 10px 10px 10px;
+		margin-bottom: 15px;
+		background: #eee;
 		border-radius: 6px;
 	}
 

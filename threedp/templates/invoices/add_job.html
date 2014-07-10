@@ -4,13 +4,59 @@
 {% block title %}Start a job{% endblock %}
 
 {% block content %}
+	{% block page-heading %}<h3><span class="glyphicon glyphicon-plus"></span> Start a new print job</a></h3>{% endblock page-heading %}
 	<div class="col-md-6">
 		<form action="" method="post">{% csrf_token %}
-				{% bootstrap_form form %}
-				{% buttons %}
-					<input type="submit" value="Submit" id="invoice-submit">
-				{% endbuttons %}
+			<fieldset class="required"><h4 class="warning hidden-print"><span class="label label-danger">All fields in this section are required</span></h4>
+				<p><label for="id_customer_first_name" class="front-page-label">Customer first name:</label>
+				    {{ form.customer_first_name }}</p>
+				<p><label for="id_customer_last_name" class="front-page-label">Customer last name:</label>
+				    {{ form.customer_last_name }}</p>
+				<p class="no-show"><label class="front-page-label">Bison ID #:</label>
+				    {{ form.customer_first_name }}</p>
+				<p><label for="id_customer_email" class="front-page-label">Customer email:</label>
+				    {{ form.customer_email }}</p>
+				<p><label for="id_customer_last_name" class="front-page-label">Customer phone:</label>
+				    {{ form.customer_phone }}</p>
+				<p><label for="id_customer_filename" class="front-page-label">Customer file name:</label>
+				    {{ form.customer_filename }}</p>
+				<p class="hidden-print"><label for="id_customer_purpose" class="front-page-label">Purpose:</label>
+				    {{ form.customer_purpose }}</p>
+				<p class="hidden-print"><label for="id_customer_department" class="front-page-label">Department:</label>
+				    {{ form.customer_department }}</p>
+				<p class="hidden-print"><label for="id_customer_status" class="front-page-label">Customer status:</label>
+				    {{ form.customer_status }}</p>
+				<p><label for="id_estimated_time" class="front-page-label">Estimated time:</label>
+				    {{ form.estimated_time }}</p>
+				<p><label for="id_estimated_cost" class="front-page-label">Estimated cost:</label>
+				    {{ form.estimated_cost }}</p>
+			</fieldset>
+			
+			<fieldset>
+				<p><label for="description" class="front-page-label">Description:</label>
+					{{ form.description }}</p>
+				<p><label for="id_sd_card_number" class="front-page-label">SD card number:</label>
+					{{ form.sd_card_number }}</p>
+				<p><label for="filename" class="front-page-label">Our filename:</label>
+					{{ form.filename }}</p>
+				<p><label for="actual_time" class="front-page-label">Actual time:</label>
+					{{ form.actual_time }}</p>
+			 	<p><label for="job_cost" class="front-page-label">Job cost:</label>
+					{{ form.job_cost }}</p>
+			</fieldset>  
+			
+			<p class="hidden-print"><label for="job_state" class="front-page-label">Job state:</label>
+				{{ form.job_state }}</p>
+			
+			<input type="submit" value="Submit" class="btn btn-primary hidden-print" id="invoice-submit" onclick="openWin()">
 		</form>
+	</div>
+
+	<div class="disclaimer visible-print">
+		<ul>
+			<li>This is not a copyrighted item.</li>
+			<li>I understand that the cost listed above is an estimate.  The final cost may be greater.</li>
+		</ul>
 	</div>
 {% endblock %}
 
