@@ -43,6 +43,9 @@
 <div class="container">
 	<div class="row">
 		{% block content %}
+			<div class="page-heading col-md-12">
+				{% block page-heading %}{% endblock page-heading %}
+			</div>
 
 		{% endblock %}
 	</div>

@@ -3,16 +3,13 @@
 
 {% block title %}Open Jobs{% endblock %}
 {% block content %}
+
 	<div class="jobs-page">
-		<div class="row">
-			<div class="col-md-12">
-				<h1>Open Jobs</h1>
-			</div>
-		</div>
+	{% block page-heading %}<h2>Open Jobs</h2>{% endblock page-heading %}
 
 		<div class="row">
 			<div class="col-md-3">
-				<h2><span class="glyphicon glyphicon-list"></span> Queued Jobs</h2>
+				<h3><span class="glyphicon glyphicon-list"></span> Queued Jobs</h3>
 				{% if queued_jobs_count > 0 %}
 					{% if user.is_authenticated %}
 						{% for job in queued_jobs%}
@@ -37,7 +34,7 @@
 			</div>
 
 			<div class="col-md-3 col-md-offset-1">
-				<h2><span class="glyphicon glyphicon-play"></span> Running Jobs</h2>
+				<h3><span class="glyphicon glyphicon-play"></span> Running Jobs</h3>
 				{% if running_jobs_count > 0 %}
 					{% if user.is_authenticated %}
 						{% for job in running_jobs%}

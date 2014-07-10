@@ -3,9 +3,8 @@
 {% block title %}Unresolved Notes{% endblock %}
 
 {% block content %}
-<div class="page-header">
-	<h1><span class="label label-primary">Unresolved Notes</span></h1>
-</div>
+
+{% block page-heading %}<h2>Unresolved notes</h2>{% endblock page-heading %}
 {% if user.is_authenticated %}
 {% for note in unresolved_notes %}
 	<a href="{% url 'note_detail' note.id %}"><strong>Message #{{ note.id }}</strong></a><br>
