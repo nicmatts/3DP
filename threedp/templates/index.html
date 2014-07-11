@@ -15,7 +15,7 @@
 				<p><label for="id_customer_last_name" class="front-page-label">Customer last name:</label>
 				    {{ form.customer_last_name }}</p>
 				<p class="no-show"><label class="front-page-label">Bison ID #:</label>
-				    {{ form.customer_first_name }}</p>
+				    </p>
 				<p><label for="id_customer_email" class="front-page-label">Customer email:</label>
 				    {{ form.customer_email }}</p>
 				<p><label for="id_customer_last_name" class="front-page-label">Customer phone:</label>
@@ -50,7 +50,7 @@
 	</div>
 		
 	<div class="col-md-4 col-md-offset-1 hidden-print">
-		<div class="front-right-sidebar">
+		<div class="front-right-sidebar queued">
 			<div class="box-header">
 				<h3><span class="glyphicon glyphicon-list"></span> Queued Jobs</h3>
 			</div>
@@ -65,8 +65,10 @@
 			</div>
 		</div>
 
-		<div class="front-right-sidebar">
-			<h3><span class="glyphicon glyphicon-play"></span> Running Jobs</h3>
+		<div class="front-right-sidebar running">
+			<div class="box-header">
+				<h3><span class="glyphicon glyphicon-play"></span> Running Jobs</h3>
+			</div>
 				{% for job in running_invoices %}
 					{% if job.filename %}
 						<a href="{% url 'job_detail' job.id %}">Job #{{ job.id }}: {{ job.filename }}</a><br>
@@ -76,12 +78,11 @@
 				{% endfor %}
 		</div>
 
-		<div class="front-right-sidebar">
-			<h3><span class="glyphicon glyphicon-exclamation-sign"></span> Urgent Messages</h3>
+		<div class="front-right-sidebar urgent">
+			<div class="box-header">
+				<h3><span class="glyphicon glyphicon-exclamation-sign"></span> Urgent Messages</h3>
+			</div>
 				{% for note in urgent_notes %}
-					{% if update.note %}
-						<h4>Updated</h2>
-					{% endif %}
 					<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject}}</strong></a><br>
 					<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
 					<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
@@ -96,8 +97,10 @@
 				{% endfor %}
 		</div>
 
-		<div class="front-right-sidebar">
-			<h3><span class="glyphicon glyphicon-flag"></span> Unresolved Messages</h3>
+		<div class="front-right-sidebar unresolved">
+			<div class="box-header">
+				<h3><span class="glyphicon glyphicon-flag"></span> Unresolved Messages</h3>
+			</div>
 				{% for note in unresolved_notes %}
 					{% if not note.urgent %}
 						<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject }}</strong></a><br>
