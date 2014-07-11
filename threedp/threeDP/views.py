@@ -49,7 +49,6 @@ def index(request):
 	urgent_notes = Note.urgent_notes.all()
 	queued_invoices = Invoice.queued_invoices.all()
 	running_invoices = Invoice.running_invoices.all()
-	#updates = Update.updates.all()
 	note_form = NoteForm(request.POST)
 	if note_form.is_valid():
 		note_form.save()
