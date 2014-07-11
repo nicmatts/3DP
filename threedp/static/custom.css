@@ -2,10 +2,26 @@ body {
 	font-family: 'oxygen', 'tahoma', sans-serif;
 }
 
-.container {
-	margin-left: 70px;
+.navbar {
+	margin-left: -20px;
+	margin-right: -20px;
 }
 
+.big-3dp {
+	background: url('grid.png');
+	min-height: 400px;
+	border-radius: 6px;
+}
+
+.vertical-text {
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	transform: rotate(90deg);
+	margin-top: 30px;
+	font-size: 180px;
+	color: #FFFFFF;
+	text-shadow: 1px 1px 3px #666;
+}
 /******** front page styling **********/
 
 @media screen{
@@ -79,8 +95,37 @@ body {
 	.front-right-sidebar {
 		background: #F7F5F5;
 		border-radius: 6px;
-		padding: 5px 20px 20px 20px;
+		//padding: 0 20px 20px 20px;
 		margin-bottom: 20px;
+	}
+
+	.box-header h3 {
+		padding: 10px 20px;
+		margin: 0;
+	}
+
+	.box {
+		padding: 10px 20px;
+	}
+
+	.queued{
+		background-color: #FFDC75;
+		border-radius: 6px 6px 0 0;
+	} 
+
+	.running{
+		background-color: #3DB661;
+		border-radius: 6px 6px 0 0;
+	}	
+
+	.urgent{
+		background-color: #F66852;
+		border-radius: 6px 6px 0 0;
+	}
+
+	.unresolved{
+		background-color: #9294DC;
+		border-radius: 6px 6px 0 0;
 	}
 
 	/********* notes page *************/
