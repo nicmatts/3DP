@@ -1,26 +1,37 @@
 $( document ).ready(function() {
 
 	$( "#id_actual_time" ).blur(function() {
+		//get value of the "actual time" input
 		actualTime = $( "#id_actual_time").val();
-		console.log(actualTime);
+
+		//if there is something in the box
 		if (actualTime != " "){
-			console.log("Not zero");
+			//split the hours and minutes into an array
 			var newTime = actualTime.split(":");
-			console.log(newTime);
+			
+			//cost is $3 per hour
 			var hourCost = (parseInt(newTime[0],10)) * 3;
-			//hourCost = hourCost.toFixed(2);
+			
+			//plus $0.05 per minute
 			var minuteCost = (parseInt(newTime[1],10)) * 0.05;
-			//minuteCost = minuteCost.toFixed(2);
+			
+			//add them up
 			cost = hourCost + minuteCost;
+			
+			//typeOf(cost) returns NaN if you don't enter it with a colon
 			if (isNaN(cost)){
 				alert("Please time enter in HH:MM format");
 			}
-			console.log(cost);
-			if (cost < 3.00){
-				cost = 3.00;
+
+			//minimum cost is $3
+			if (cost < 3){
+				cost = 3;
 			}
+
+			//return cost with two decimals
 			cost = cost.toFixed(2);
-			console.log(cost);
+
+			//fill in the actual cost input
 			$("#id_job_cost").val(cost);
 		}
 	});
@@ -28,27 +39,27 @@ $( document ).ready(function() {
 
 	$( "#id_estimated_time" ).blur(function() {
 		estimatedTime = $( "#id_estimated_time").val();
-		console.log(estimatedTime);
 		if (estimatedTime != " "){
-			console.log("Not zero");
 			var newTime = estimatedTime.split(":");
-			console.log(newTime);
 			var hourCost = (parseInt(newTime[0],10)) * 3;
-			//hourCost = hourCost.toFixed(2);
 			var minuteCost = (parseInt(newTime[1],10)) * 0.05;
-			//minuteCost = minuteCost.toFixed(2);
 			cost = hourCost + minuteCost;
+			
 			if (isNaN(cost)){
 				alert("Please time enter in HH:MM format");
 			}
-			console.log(cost);
-			if (cost < 3.00){
-				cost = 3.00;
+			
+			if (cost < 3){
+				cost = 3;
 			}
+			
 			cost = cost.toFixed(2);
-			console.log(cost);
+			
 			$("#id_estimated_cost").val(cost);
-			window.print();
+			
+			$( "#id_estimated_time" ).blur(function() {
+				window.print();
+			});
 		}
 	});
 });
