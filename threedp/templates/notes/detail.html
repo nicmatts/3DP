@@ -35,10 +35,10 @@ Resolved? {{ note.resolved }} -->
 	<strong>{{ u.subject }}</strong></br>
 	<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
 	<strong>Posted on</strong>: {{ u.created|date:" l, M d, Y" }}<br>
-	<strong>Message</strong>: {{ u.description|linebreaks }}<br>
+	<strong>Update</strong>: {{ u.description|linebreaks }}<br>
 {% endfor %}
 
-<a href="{% url 'notes.views.add_update' item.id %}">Add a comment</a>
+<a href="{% url 'notes.views.add_update' item.id %}">Add an update</a>
 </div>
 {% endblock content %}
 
