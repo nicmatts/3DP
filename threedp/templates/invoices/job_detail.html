@@ -49,10 +49,10 @@
 				<strong>SD card number: </strong>{{ job.sd_card_number }}<br>
 				<strong>File name: </strong>{{ job.filename }}<br>
 				<strong>Description: </strong>{{ job.description }}<br>
-				<strong>Estimated time: </strong>{{ job.estimated_time }}<br>
-				<strong>Estimated cost: </strong>{{ job.estimated_cost }}<br>
-				<strong>Actual time: </strong>{{ job.actual_time }}<br>
-				<strong>Job cost: </strong>{{ job.job_cost }}
+				<strong>Estimated time: </strong>{{ job.estimated_time | date:"G:i" }}<br>
+				<strong>Estimated cost: </strong>${{ job.estimated_cost | floatformat:2 }}<br>
+				<strong>Actual time: </strong>{{ job.actual_time | date:"G:i" }}<br>
+				<strong>Job cost: </strong>${{ job.job_cost | floatformat:2 }}
 			</div>
 		</div>
 		<hr>

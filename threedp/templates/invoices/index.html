@@ -22,7 +22,7 @@
 									{% endif %}
 								{{ job.filename }}</a><br>
 								Customer name: {{ job.customer_first_name }} {{ job.customer_last_name }}</br>
-					 			Estimated time: {{ job.estimated_time }}<br>
+					 			Estimated time: {{ job.estimated_time | date:"G:i" }}<br>
 					 		</div>
 				 		{% endfor %}
 					{% else %}
@@ -47,7 +47,7 @@
 									{% endif %}
 								{{ job.filename }}</a><br>
 								Customer name: {{ job.customer_first_name }} {{ job.customer_last_name }}</br>
-					 			Estimated time: {{ job.estimated_time }}<br>
+					 			Estimated time: {{ job.estimated_time | date:"G:i" }}<br>
 					 		</div>
 				 		{% endfor %}
 					{% else %}
