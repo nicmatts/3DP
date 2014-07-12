@@ -1,5 +1,6 @@
 body {
 	font-family: 'oxygen', 'tahoma', sans-serif;
+	background-image: url('grid.png');
 }
 
 .navbar {
