@@ -8,7 +8,7 @@ class NoteAdmin(admin.ModelAdmin):
     search_fields = ['subject']
 
 class UpdateAdmin(admin.ModelAdmin):
-    list_display = ('subject', 'created',)
+    list_display = ('note', 'subject', 'created',)
     list_filter = ['created']
     search_fields = ['subject']
 
