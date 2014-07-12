@@ -3,9 +3,8 @@ body {
 	background-image: url('grid.png');
 }
 
-.navbar {
-	margin-left: -20px;
-	margin-right: -20px;
+.row.page {
+	margin: 0;
 }
 
 .bg-primary.page-header {
@@ -66,12 +65,11 @@ body {
 	}
 
 	.container .jumbotron {
-		padding-left: 30px;
-		padding-right: 30px;
+		padding: 0;
 	}
 
-	.jumbotron {
-		padding: 2px 10px 20px;
+	.jumbotron-content {
+		padding: 10px 25px 20px 25px;
 	}
 
 	.jumbotron p {
@@ -104,13 +102,18 @@ body {
 		margin-bottom: 20px;
 	}
 
-	.box-header h3 {
-		padding: 10px 20px;
+	.box-header h3, .jumbotron h3.box-header {
+		padding: 10px 25px;
 		margin: 0;
+		border-radius: 6px 6px 0 0;
+	}
+
+	.jumbotron h3.box-header a{
+		color: white;
 	}
 
 	.box {
-		padding: 10px 20px;
+		padding: 10px 25px;
 		border-radius: 0 0 6px 6px;
 	}
 
@@ -142,6 +145,10 @@ body {
 	}
 
 	/********* jobs pages **************/
+	.job-page {
+		margin: 0 10px 0 20px;
+	}
+
 	.job-info {
 		margin-bottom: 15px;
 	}

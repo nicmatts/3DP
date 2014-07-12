@@ -7,45 +7,49 @@
 	<div class="col-md-7">
 		<div class="jumbotron">
 			<h3 class="visible-print">NDSU Libraries 3D Printing Service</h3>
-			<h3 class="hidden-print bg-primary"><a href="{% url 'add_job' %}"><span class="glyphicon glyphicon-plus"></span> Start a new print job</a></h3>
-			<h4 class="warning hidden-print"><span class="label label-danger">All fields are required</span></h4>
-			<form action="/jobs/add/" method="post">{% csrf_token %}
-				<p><label for="id_customer_first_name" class="front-page-label">Customer first name:</label>
-				    {{ form.customer_first_name }}</p>
-				<p><label for="id_customer_last_name" class="front-page-label">Customer last name:</label>
-				    {{ form.customer_last_name }}</p>
-				<p class="no-show"><label class="front-page-label">Bison ID #:</label>
-				    <p style="width: 150px; border-bottom: 1px solid black"></p></p>
-				<p><label for="id_customer_email" class="front-page-label">Customer email:</label>
-				    {{ form.customer_email }}</p>
-				<p><label for="id_customer_last_name" class="front-page-label">Customer phone:</label>
-				    {{ form.customer_phone }}</p>
-				<p><label for="id_customer_filename" class="front-page-label">Customer file name:</label>
-				    {{ form.customer_filename }}</p>
-				<p class="hidden-print"><label for="id_customer_purpose" class="front-page-label">Purpose:</label>
-				    {{ form.customer_purpose }}</p>
-				<p class="hidden-print"><label for="id_customer_department" class="front-page-label">Department:</label>
-				    {{ form.customer_department }}</p>
-				<p class="hidden-print"><label for="id_customer_status" class="front-page-label">Customer status:</label>
-				    {{ form.customer_status }}</p>
-				<p><label for="id_estimated_time" class="front-page-label">Estimated time:</label>
-				    {{ form.estimated_time }}</p>
-				<p><label for="id_estimated_cost" class="front-page-label">Estimated cost:</label>
-				    {{ form.estimated_cost }}</p>
-				<p class="hidden-print"><label for="job_state" class="front-page-label">Job state:</label>
-					{{ form.job_state }}</p>
-				<input type="submit" value="Submit" class="btn btn-primary hidden-print" id="invoice-submit" onclick="openWin()">
-			</form>
+			<h3 class="hidden-print bg-primary box-header"><a href="{% url 'add_job' %}"><span class="glyphicon glyphicon-plus"></span> Start a new print job</a></h3>
+			<div class="jumbotron-content">
+				<h4 class="warning hidden-print"><span class="label label-danger">All fields are required</span></h4>
+				<form action="/jobs/add/" method="post">{% csrf_token %}
+					<p><label for="id_customer_first_name" class="front-page-label">Customer first name:</label>
+					    {{ form.customer_first_name }}</p>
+					<p><label for="id_customer_last_name" class="front-page-label">Customer last name:</label>
+					    {{ form.customer_last_name }}</p>
+					<p class="no-show"><label class="front-page-label">Bison ID #:</label>
+					    <span style="width: 150px; border-bottom: 1px solid black"></span></p>
+					<p><label for="id_customer_email" class="front-page-label">Customer email:</label>
+					    {{ form.customer_email }}</p>
+					<p><label for="id_customer_last_name" class="front-page-label">Customer phone:</label>
+					    {{ form.customer_phone }}</p>
+					<p><label for="id_customer_filename" class="front-page-label">Customer file name:</label>
+					    {{ form.customer_filename }}</p>
+					<p class="hidden-print"><label for="id_customer_purpose" class="front-page-label">Purpose:</label>
+					    {{ form.customer_purpose }}</p>
+					<p class="hidden-print"><label for="id_customer_department" class="front-page-label">Department:</label>
+					    {{ form.customer_department }}</p>
+					<p class="hidden-print"><label for="id_customer_status" class="front-page-label">Customer status:</label>
+					    {{ form.customer_status }}</p>
+					<p><label for="id_estimated_time" class="front-page-label">Estimated time:</label>
+					    {{ form.estimated_time }}</p>
+					<p><label for="id_estimated_cost" class="front-page-label">Estimated cost:</label>
+					    {{ form.estimated_cost }}</p>
+					<p class="hidden-print"><label for="job_state" class="front-page-label">Job state:</label>
+						{{ form.job_state }}</p>
+					<input type="submit" value="Submit" class="btn btn-primary hidden-print" id="invoice-submit" onclick="openWin()">
+				</form>
 
-			{% include 'invoices/disclaimer.html' %}
+				{% include 'invoices/disclaimer.html' %}
+			</div>
 		</div>
 
 		<div class="jumbotron add-note hidden-print">
-			<h3 class="bg-primary"><a href="{% url 'add_note' %}"><span class="glyphicon glyphicon-pencil"></span> Post a message</a></h3>
-			<form action="{% url 'add_note' %}" method="post">{% csrf_token %}
-				{% bootstrap_form note_form %}
-				<input type="submit" value="Submit"  class="btn btn-primary">
-			</form>
+			<h3 class="bg-primary box-header"><a href="{% url 'add_note' %}"><span class="glyphicon glyphicon-pencil"></span> Post a message</a></h3>
+			<div class="jumbotron-content">
+				<form action="{% url 'add_note' %}" method="post">{% csrf_token %}
+					{% bootstrap_form note_form %}
+					<input type="submit" value="Submit"  class="btn btn-primary">
+				</form>
+			</div>
 		</div>
 	</div>
 		
@@ -88,14 +92,7 @@
 				{% for note in urgent_notes %}
 					<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject}}</strong></a><br>
 					<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
-					<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
-					<strong>Urgent?</strong>: 
-						{% if note.urgent %}
-							Yes
-						{% else %}
-							No
-						{% endif %}
-						<br>				
+					<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>	
 					<strong>Message</strong>: {{ note.description|linebreaks }}	
 				{% endfor %}
 			</div>
