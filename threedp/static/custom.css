@@ -8,6 +8,11 @@ body {
 	margin-right: -20px;
 }
 
+.bg-primary.page-header {
+	padding: 15px;
+	border-radius: 6px;
+}
+
 .big-3dp {
 	background: url('grid.png');
 	min-height: 400px;
@@ -93,10 +98,9 @@ body {
 		width: 200px;
 	}
 
-	.front-right-sidebar {
-		background: #F7F5F5;
+	.info-box {
+		background: #eee;
 		border-radius: 6px;
-		//padding: 0 20px 20px 20px;
 		margin-bottom: 20px;
 	}
 
@@ -107,6 +111,7 @@ body {
 
 	.box {
 		padding: 10px 20px;
+		border-radius: 0 0 6px 6px;
 	}
 
 	.queued{
@@ -138,20 +143,7 @@ body {
 
 	/********* jobs pages **************/
 	.job-info {
-		margin-bottom: 10px;
-	}
-
-	.job-queued {
-		background-color: rgba(255, 255, 39, 0.17);
-	}
-
-	.job-running {
-		background-color: rgba(18, 185, 4, 0.11);
-	}
-
-	.job-queued, .job-running {
-		padding: 10px;
-		border-radius: 6px;
+		margin-bottom: 15px;
 	}
 
 	fieldset.required {
@@ -165,7 +157,7 @@ body {
 
 /******* styling for printed invoice *********/	
 @media print {
-/*  .front-right-sidebar, .add-note, .btn, .no-print, h3, h4 {
+/*  .info-box, .add-note, .btn, .no-print, h3, h4 {
   	display: none;
   }*/
 

@@ -3,27 +3,32 @@
 {% block title %}Completed Jobs{% endblock %}
 {% block content %}
 	<div class="jobs-page">
-		{% block page-heading %}<h2>Completed jobs</h2>{% endblock page-heading %}
-
+		{% block page-heading %}<h2 class="bg-primary page-header"><span class="glyphicon glyphicon-ok-sign"></span> Completed jobs</h2>{% endblock page-heading %}
 		<div class="row">
-			<div class="col-md-3">
-				{% if user.is_authenticated %}
-					{% for job in completed_jobs%}
-						<div class="job-info">
-				 			<a href="{% url 'job_detail' job.id %}">Job #{{ job.id }}: 
-					 			{% if job.filename %}
-									{{ job.filename }}
-								{% else %}
-									{{ job.customer_filename }}
-								{% endif %}
-							{{ job.filename }}</a><br>
-							Customer name: {{ job.customer_first_name }} {{ job.customer_last_name }}</br>
-				 			Estimated time: {{ job.estimated_time }}<br>
-				 		</div>
-			 		{% endfor %}
-				{% else %}
-					<p>Please <a href="{% url 'login'%}">log in to view messages</a>.
-				{% endif %}
+			<div class="col-md-4">
+				<div class="info-box">
+					<div class="box">
+						{% if user.is_authenticated %}
+							{% for job in completed_jobs%}
+								<div class="job-info">
+						 			<a href="{% url 'job_detail' job.id %}">Job #{{ job.id }}: 
+							 			{% if job.filename %}
+											{{ job.filename }}
+										{% else %}
+											{{ job.customer_filename }}
+										{% endif %}
+									</a><br>
+									Customer name: {{ job.customer_first_name }} {{ job.customer_last_name }}</br>
+									Estimated time: {{ job.estimated_time | date:"G:i" }}<br>
+						 			Actual time: {{ job.actual_time | date:"G:i" }}<br>
+						 			Job cost: ${{ job.job_cost | floatformat:2 }}
+						 		</div>
+					 		{% endfor %}
+						{% else %}
+							<p>Please <a href="{% url 'login'%}">log in to view messages</a>.
+						{% endif %}
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

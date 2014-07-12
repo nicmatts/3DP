@@ -57,7 +57,7 @@ $( document ).ready(function() {
 			
 			$("#id_estimated_cost").val(cost);
 			
-			$( "#id_estimated_time" ).blur(function() {
+			$( "#id_estimated_cost" ).blur(function() {
 				window.print();
 			});
 		}

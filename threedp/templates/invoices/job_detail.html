@@ -19,14 +19,16 @@
 				{{ job.customer_filename }}
 			{% endif %}
 		</h2>
-		<h2>
+		<h2 class="job-state-button">
+			<a href="{% url 'invoices.views.job_edit' job.id %}">
 			{% if job.job_state == "queued" %}
 				<span class="label label-warning state">{{ job.job_state }}</span>
 			{% elif job.job_state == "running" %}
-				<span class="label label-info state">{{ job.job_state }}</span>
-			{% else %}
 				<span class="label label-success state">{{ job.job_state }}</span>
+			{% else %}
+				<span class="label label-info state">{{ job.job_state }}</span>
 			{% endif %}
+			</a>
 		</h2>
 
 		<div class="row">

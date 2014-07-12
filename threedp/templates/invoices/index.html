@@ -5,58 +5,74 @@
 {% block content %}
 
 	<div class="jobs-page">
-	{% block page-heading %}<h2>Open Jobs</h2>{% endblock page-heading %}
+	{% block page-heading %}<h2 class="bg-primary page-header"><span class="glyphicon glyphicon-dashboard"></span> Open Jobs</h2>{% endblock page-heading %}
 
 		<div class="row">
-			<div class="col-md-3">
-				<h3><span class="glyphicon glyphicon-list"></span> Queued Jobs</h3>
-				{% if queued_jobs_count > 0 %}
-					{% if user.is_authenticated %}
-						{% for job in queued_jobs%}
-							<div class="job-info job-queued">
-					 			<a href="{% url 'job_detail' job.id %}">Job #{{ job.id }}: 
-						 			{% if job.filename %}
-										{{ job.filename }}
-									{% else %}
-										{{ job.customer_filename }}
-									{% endif %}
-								{{ job.filename }}</a><br>
-								Customer name: {{ job.customer_first_name }} {{ job.customer_last_name }}</br>
-					 			Estimated time: {{ job.estimated_time | date:"G:i" }}<br>
-					 		</div>
-				 		{% endfor %}
-					{% else %}
-						<p>Please <a href="{% url 'login'%}">log in to view messages</a>.
-					{% endif %}
-				{% else %}
-					<h4><span class="glyphicon glyphicon-remove-sign"></span> No queued jobs.</h4>
-				{% endif %}
+			<div class="col-md-4">
+				<div class="info-box">
+					<div class="box-header queued">
+						<h3><span class="glyphicon glyphicon-list"></span> Queued Jobs</h3>
+					</div>
+					<div class="box">
+						{% if queued_jobs_count > 0 %}
+							{% if user.is_authenticated %}
+								{% for job in queued_jobs%}
+									<div class="job-info">
+							 			<a href="{% url 'job_detail' job.id %}">Job #{{ job.id }}: 
+								 			{% if job.filename %}
+												{{ job.filename }}
+											{% else %}
+												{{ job.customer_filename }}
+											{% endif %}
+										{{ job.filename }}</a><br>
+										Customer name: {{ job.customer_first_name }} {{ job.customer_last_name }}</br>
+							 			Estimated time: {{ job.estimated_time | date:"G:i" }}<br>
+							 		</div>
+						 		{% endfor %}
+							{% else %}
+								<p>Please <a href="{% url 'login'%}">log in to view messages</a>.
+							{% endif %}
+						{% else %}
+							<h4><span class="glyphicon glyphicon-remove-sign"></span> No queued jobs.</h4>
+						{% endif %}
+					</div>
+				</div>
 			</div>
 
-			<div class="col-md-3 col-md-offset-1">
-				<h3><span class="glyphicon glyphicon-play"></span> Running Jobs</h3>
-				{% if running_jobs_count > 0 %}
-					{% if user.is_authenticated %}
-						{% for job in running_jobs%}
-							<div class="job-info job-running">
-					 			<a href="{% url 'job_detail' job.id %}">Job #{{ job.id }}: 
-						 			{% if job.filename %}
-										{{ job.filename }}
-									{% else %}
-										{{ job.customer_filename }}
-									{% endif %}
-								{{ job.filename }}</a><br>
-								Customer name: {{ job.customer_first_name }} {{ job.customer_last_name }}</br>
-					 			Estimated time: {{ job.estimated_time | date:"G:i" }}<br>
-					 		</div>
-				 		{% endfor %}
-					{% else %}
-						<p>Please <a href="{% url 'login'%}">log in to view messages</a>.
-					{% endif %}
-				{% else %}
-					<h4><span class="glyphicon glyphicon-remove-sign"></span> No running jobs.</h4>
-				{% endif %}
+			<div class="col-md-4 col-md-offset-1">
+				<div class="info-box">
+					<div class="box-header running">
+						<h3><span class="glyphicon glyphicon-play"></span> Running Jobs</h3>
+					</div>
+					<div class="box">
+						{% if running_jobs_count > 0 %}
+							{% if user.is_authenticated %}
+								{% for job in running_jobs%}
+									<div class="job-info job-running">
+							 			<a href="{% url 'job_detail' job.id %}">Job #{{ job.id }}: 
+								 			{% if job.filename %}
+												{{ job.filename }}
+											{% else %}
+												{{ job.customer_filename }}
+											{% endif %}
+										{{ job.filename }}</a><br>
+										Customer name: {{ job.customer_first_name }} {{ job.customer_last_name }}</br>
+							 			Estimated time: {{ job.estimated_time | date:"G:i" }}<br>
+							 		</div>
+						 		{% endfor %}
+							{% else %}
+								<p>Please <a href="{% url 'login'%}">log in to view messages</a>.
+							{% endif %}
+						{% else %}
+							<h4><span class="glyphicon glyphicon-remove-sign"></span> No running jobs.</h4>
+						{% endif %}
+					</div>
+				</div>
 			</div>
+
+<!-- 			<div class="col-md-3 col-md-offset-2 big-3dp">
+				<div class="vertical-text">3DP</div>
+			</div> -->
 		</div>
 	</div>
 
