@@ -31,6 +31,10 @@ body {
 	text-shadow: 1px 1px 3px #a3a3a3;
 	letter-spacing: -15px;
 }
+
+.bg-primary {
+	background-color: #1870BD;
+}
 /******** front page styling **********/
 
 @media screen{
@@ -232,3 +236,8 @@ body {
   }
 }
 
+
+
+h3.login {
+	border-radius: 6px 6px 0 0 !important;
+}
