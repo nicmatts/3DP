@@ -153,6 +153,10 @@ body {
 		color: white;
 	}
 
+	.front-page-jobs {
+		margin-bottom: 60px;
+	}
+
 	/********* notes page *************/
 	.note {
 		min-height: 190px;
