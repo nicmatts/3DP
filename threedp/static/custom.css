@@ -1,6 +1,7 @@
 body {
 	font-family: 'oxygen', 'tahoma', sans-serif;
-	background-image: url('grid.png');
+	background-color: #eee;
+	background-image: url('grid-dk2.png');
 }
 
 .row.page {
@@ -140,6 +141,14 @@ body {
 		border-radius: 6px 6px 0 0;
 	}
 
+	.page-header {
+		border-bottom: none;
+	}
+
+	a.header-link{
+		color: white;
+	}
+
 	/********* notes page *************/
 	.note {
 		min-height: 190px;
@@ -156,13 +165,47 @@ body {
 		margin-bottom: 15px;
 	}
 
-	fieldset.required {
+	fieldset {
 		padding: 0 10px 10px 10px;
+	}
+
+	fieldset.required-fields {
 		margin-bottom: 15px;
-		background: #eee;
+		background: #d3d3d3;
 		border-radius: 6px;
 	}
 
+	.job-box {
+		border-radius: 6px;
+		padding: 20px;
+		min-height: 250px;
+
+	}
+
+	.job-box h3 {
+		padding: 0 0 10px 0;
+		margin: 0;
+	}
+
+	.job-state-button {
+		margin-bottom: 20px;
+	}
+
+	h3.job-state-button a:hover{
+		text-decoration: none;
+	}
+
+	.job-state-button span.label-warning:hover {
+		background-color: #FFC066;
+	}
+
+	.job-state-button span.label-success:hover {
+		background-color: #71CE71;
+	}
+
+	.job-state-button span.label-info:hover {
+		background-color: #7ADAF6;
+	}
 }
 
 /******* styling for printed invoice *********/	

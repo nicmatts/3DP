@@ -4,12 +4,6 @@
 {% block title %}Edit job{% endblock %}
 
 {% block content %}
-	<div class="col-md-6">
-		<form action="" method="post">{% csrf_token %}
-			{% bootstrap_form form %}
-			{% buttons %}
-				<input type="submit" value="Submit" class="btn btn-primary">
-			{% endbuttons %}
-		</form>
-	</div>
+
+	{% include 'invoices/job_form.html' %}
 {% endblock content %}
