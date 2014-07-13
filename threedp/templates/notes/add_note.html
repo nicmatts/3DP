@@ -5,11 +5,16 @@
 
 {% block content %}
 	<div class="col-md-6">
-		<form action="" method="post">{% csrf_token %}
-				{% bootstrap_form form %}
-				{% buttons %}
-					<input type="submit" class="btn btn-primary" value="Submit">
-				{% endbuttons %}
-		</form>
+		<div class="jumbotron">
+			<h3 class="bg-primary box-header"><span class="glyphicon glyphicon-pencil"></span> Post a message</h3>
+			<div class="jumbotron-content">
+				<form action="" method="post">{% csrf_token %}
+					{% bootstrap_form form %}
+					{% buttons %}
+						<input type="submit" class="btn btn-primary" value="Submit">
+					{% endbuttons %}
+				</form>
+			</div>
+		</div>
 	</div>
 {% endblock %}
