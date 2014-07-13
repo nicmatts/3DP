@@ -13,6 +13,10 @@ body {
 	border-radius: 6px;
 }
 
+.bg-primary {
+	background-color: #0159A7;
+}
+
 .page-header {
 	margin-top: 30px;
 }
@@ -32,9 +36,7 @@ body {
 	letter-spacing: -15px;
 }
 
-.bg-primary {
-	background-color: #1870BD;
-}
+
 /******** front page styling **********/
 
 @media screen{

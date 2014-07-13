@@ -11,6 +11,10 @@ class UnresolvedNoteManager(models.Manager):
     def get_queryset(self):
         return super(UnresolvedNoteManager, self).get_queryset().filter(resolved=False)
 
+class ResolvedNoteManager(models.Manager):
+    def get_queryset(self):
+        return super(ResolvedNoteManager, self).get_queryset().filter(resolved=True)
+
 class UrgentNoteManager(models.Manager):
     def get_queryset(self):
         return super(UrgentNoteManager, self).get_queryset().filter(urgent=True, resolved=False)
@@ -26,6 +30,7 @@ class Note(models.Model):
 
 	all_notes = AllNotesManager()
 	unresolved_notes = UnresolvedNoteManager()
+	resolved_notes = ResolvedNoteManager()
 	urgent_notes = UrgentNoteManager()
 
 	def __unicode__(self):
