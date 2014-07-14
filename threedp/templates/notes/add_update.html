@@ -4,12 +4,19 @@
 {% block title %}Update note{% endblock %}
 
 {% block content %}
-	<div class="col-md-6">
-		<form action="" method="post">{% csrf_token %}
-				{% bootstrap_form form %}
-				{% buttons %}
-					<input type="submit" class="btn btn-primary" value="Submit">
-				{% endbuttons %}
-		</form>
+	<div class="row">
+		<div class="col-md-4">
+				<div class="info-box">
+					<div class="box">
+						<form action="" method="post">{% csrf_token %}
+							{% bootstrap_form form %}
+							{% buttons %}
+								<input type="submit" class="btn btn-primary" value="Submit">
+							{% endbuttons %}
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 {% endblock %}
