@@ -1,4 +1,5 @@
 from django.db import models
+from django.http import HttpResponse
 
 # Create your models here.
 
@@ -20,6 +21,10 @@ class CompletedInvoicesManager(models.Manager):
 
 
 class Invoice(models.Model):
+	class Meta:
+		verbose_name = "Job"
+    	verbose_name_plural = "Jobs"
+
 	STATUS = (
 		('student', 'student'),
 		('faculty', 'faculty'),
@@ -88,7 +93,7 @@ class Invoice(models.Model):
 		('Other', 'Other'),
 		('NA', 'N/A')
     )
-	
+
 	# time information
 	created = models.DateTimeField(auto_now_add=True, auto_now=False)
 	updated = models.DateTimeField(auto_now_add=False, auto_now=True)
@@ -119,7 +124,7 @@ class Invoice(models.Model):
 	completed_invoices = CompletedInvoicesManager()
 
 	def __unicode__(self):
-		return self.id, self.filename
+		return u'%s %s' % (self.id, self.filename)
 
 	#def send_email(self):
 		#return self.job_cost
