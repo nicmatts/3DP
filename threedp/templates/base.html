@@ -20,43 +20,45 @@
 	<link href='http://fonts.googleapis.com/css?family=Oxygen:400,600,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<div class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
-	<ul class="nav navbar-nav navbar-left">
-		<li><a href="{% url 'home' %}" class="navbar-brand">3DP</a></li>
-		<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Jobs<b class="caret"></b></a>
-			<ul class="dropdown-menu">
-				<li><a href="{% url 'add_job' %}">Start new job</a></li>
-				<li><a href="{% url 'open_jobs' %}">Open jobs</a></li>
-				<li><a href="{% url 'completed' %}">Completed jobs</a></li>
-			</ul>
-		</li> 
-		<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Messages<b class="caret"></b></a>
-			<ul class="dropdown-menu">
-				<li><a href="{% url 'add_note' %}">Add a message</a></li>
-				<li><a href="{% url 'all_notes' %}">Open messages</a></li>
-				<li><a href="{% url 'resolved_notes' %}">Resolved messages</a></li>
-			</ul>
-		</li> 
-	</ul>
-	{% if user.is_authenticated %}
-    	<p class="navbar-text navbar-right logout">Welcome, <a href="{% url 'logout' %}" class="navbar-link">{{ user.first_name }}</a></p>
-	{% endif %}
-	
-</div>
-
-<div class="container">
-	<div class="row">
-		{% block content %}
-			<div class="page-heading col-md-12">
-				{% block page-heading %}{% endblock page-heading %}
-			</div>
-
-		{% endblock %}
+<div class="page-wrapper">
+	<div class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
+		<ul class="nav navbar-nav navbar-left">
+			<li><a href="{% url 'home' %}" class="navbar-brand">3DP</a></li>
+			<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Jobs<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="{% url 'add_job' %}">Start new job</a></li>
+					<li><a href="{% url 'open_jobs' %}">Open jobs</a></li>
+					<li><a href="{% url 'completed' %}">Completed jobs</a></li>
+				</ul>
+			</li> 
+			<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Messages<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="{% url 'add_note' %}">Add a message</a></li>
+					<li><a href="{% url 'all_notes' %}">Open messages</a></li>
+					<li><a href="{% url 'resolved_notes' %}">Resolved messages</a></li>
+				</ul>
+			</li> 
+		</ul>
+		{% if user.is_authenticated %}
+		    <p class="navbar-text navbar-right logout">Welcome, <a href="{% url 'logout' %}" class="navbar-link">{{ user.first_name }}</a></p>
+		{% endif %}
+		
 	</div>
-</div>
 
-<nav class="navbar navbar-default navbar-inverse footer" role="navigation">
+	<div class="container">
+		<div class="row">
+			{% block content %}
+				<div class="page-heading col-md-12">
+					{% block page-heading %}{% endblock page-heading %}
+				</div>
+
+			{% endblock %}
+		</div>
+	</div>
+
+	<nav class="navbar navbar-default navbar-inverse footer navbar-fixed-bottom" role="navigation">
 	<a href="admin" class="navbar-text navbar-right">Go to admin</a>
 </nav>
+</div>
 </body>
 </html>
