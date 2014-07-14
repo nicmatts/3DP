@@ -21,6 +21,11 @@ class UrgentNoteManager(models.Manager):
 
 
 class Note(models.Model):
+
+	class Meta:
+		verbose_name = "Message"
+    	verbose_name_plural = "Messages"
+
 	subject = models.CharField(max_length = 200)
 	description = models.TextField(blank=True)
 	created = models.DateTimeField(auto_now_add=True, auto_now=False)
