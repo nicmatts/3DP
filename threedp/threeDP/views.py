@@ -50,6 +50,7 @@ def index(request):
 	queued_invoices = Invoice.queued_invoices.all()
 	running_invoices = Invoice.running_invoices.all()
 	note_form = NoteForm(request.POST)
+	is_admin = request.user.groups.filter(name='Admin')
 	if note_form.is_valid():
 		note_form.save()
 		return note_form
@@ -58,7 +59,7 @@ def index(request):
 		form.save()
 		return form
 	#return render(request, 'invoices/add_job.html', {'form': form})
-	return render_to_response('index.html', {'all_notes': all_notes, 'unresolved_notes': unresolved_notes, 'urgent_notes': urgent_notes, 'queued_invoices': queued_invoices, 'running_invoices': running_invoices, 'note_form': note_form, 'form': form}, context_instance=RequestContext(request))
+	return render_to_response('index.html', {'all_notes': all_notes, 'unresolved_notes': unresolved_notes, 'urgent_notes': urgent_notes, 'queued_invoices': queued_invoices, 'running_invoices': running_invoices, 'note_form': note_form, 'is_admin': is_admin, 'form': form}, context_instance=RequestContext(request))
     
 
 #@login_required
