@@ -26,8 +26,7 @@
 					    {{ form.estimated_time }}</p>
 					<p><label for="id_estimated_cost" class="front-page-label">Estimated cost:</label>
 					    {{ form.estimated_cost }}</p>
-					<p class="hidden-print"><label for="job_state" class="front-page-label">Job state:</label>
-						{{ form.job_state }}</p>
+				
 				</fieldset>
 
 				<fieldset>
@@ -39,6 +38,11 @@
 						{{ form.actual_time }}</p>
 				 	<p><label for="job_cost" class="front-page-label">Job cost:</label>
 						{{ form.job_cost }}</p>
+				</fieldset>
+
+				<fieldset class="required-fields job-state">
+					<p class="hidden-print"><label for="job_state" class="front-page-label">Job state:</label>
+						{{ form.job_state }}</p>
 				</fieldset>
 			
 			{% if form.errors %}

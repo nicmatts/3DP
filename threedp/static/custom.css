@@ -26,8 +26,7 @@ body {
 
 .bg-primary.page-header {
 	padding: 15px;
-/*	border-radius: 6px;
-*/}
+}
 
 .bg-primary {
 	background-color: #0159A7;
@@ -138,15 +137,13 @@ body {
 
 	.info-box {
 		background: #f5f5f5;
-/*		border-radius: 6px;
-*/		margin-bottom: 20px;
+		margin-bottom: 20px;
 	}
 
 	.box-header h3, .jumbotron h3.box-header {
 		padding: 10px 25px;
 		margin: 0;
-/*		border-radius: 6px 6px 0 0;
-*/	}
+	}
 
 	.jumbotron h3.box-header a{
 		color: white;
@@ -154,28 +151,23 @@ body {
 
 	.box {
 		padding: 10px 25px;
-/*		border-radius: 0 0 6px 6px;
-*/	}
+	}
 
 	.queued{
 		background-color: #FFDC75;
-/*		border-radius: 6px 6px 0 0;
-*/	} 
+	} 
 
 	.running{
 		background-color: #3DB661;
-/*		border-radius: 6px 6px 0 0;
-*/	}	
+	}	
 
 	.urgent{
 		background-color: #F66852;
-/*		border-radius: 6px 6px 0 0;
-*/	}
+	}
 
 	.unresolved{
 		background-color: #9294DC;
-/*		border-radius: 6px 6px 0 0;
-*/	}
+	}
 
 	.label.updated {
 		margin-left: 3px;
@@ -216,12 +208,14 @@ body {
 	fieldset.required-fields {
 		margin-bottom: 15px;
 		background: #d3d3d3;
-/*		border-radius: 6px;
-*/	}
+	}
+
+	fieldset.required-fields.job-state {
+		padding-top: 15px;
+	}
 
 	.job-box {
-/*		border-radius: 6px;
-*/		padding: 20px;
+		padding: 20px;
 		min-height: 250px;
 
 	}
@@ -245,10 +239,6 @@ body {
 
 	.job-state-button span.label-success:hover {
 		background-color: #71CE71;
-	}
-
-	.error-message {
-		color: red;
 	}
 }
 
