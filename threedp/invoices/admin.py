@@ -134,7 +134,7 @@ def export_xlsx(modeladmin, request, queryset):
 export_xlsx.short_description = u"Export XLSX"
 
 class InvoiceAdmin(admin.ModelAdmin):
-    list_display = ('customer_filename', 'created', 'id')
+    list_display = ('customer_filename', 'created', 'job_state')
     actions = [export_xlsx, export_csv]
 
 
