@@ -48,5 +48,6 @@ class Update(models.Model):
 	created = models.DateTimeField(auto_now_add=True, auto_now=False)
 	note = models.ForeignKey(Note)
 
+
 	def __unicode__(self):
 		return u'%s %s' % (self.subject, self.note)
