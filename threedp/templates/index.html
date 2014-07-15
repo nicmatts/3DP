@@ -96,7 +96,12 @@
 				</div>
 				<div class="box">
 					{% for note in urgent_notes %}
-						<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject}}</strong></a><br>
+						<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject}}</strong></a>  
+						{% for update in updates %}
+							{% if update.note.id == note.id %}
+								<span class="label label-info updated">Updated</span>
+							{% endif %}
+						{% endfor %}<br>
 						<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
 						<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>	
 						<strong>Message</strong>: {{ note.description|linebreaks }}	
@@ -111,7 +116,12 @@
 				<div class="box">
 					{% for note in unresolved_notes %}
 						{% if not note.urgent %}
-							<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject }}</strong></a><br>
+							<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject }}</strong></a>
+							{% for update in updates %}
+								{% if update.note.id == note.id %}
+									<span class="label label-info updated">Updated</span>
+								{% endif %}
+							{% endfor %}<br>
 							<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
 							<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y" }}<br>
 							<strong>Urgent?</strong>: 
