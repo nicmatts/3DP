@@ -6,13 +6,18 @@
 	<div class="row">
 		<div class="col-md-12">
 			{% block page-heading %}<h2 class="bg-primary page-header hidden-print">
-			<a href="{% url 'invoices.views.job_edit' job.id %}" class="header-link">Job #{{ job.id }}: 
-				{% if job.filename %}
-					{{ job.filename }}
-				{% else %}
-					{{ job.customer_filename }}
-				{% endif %}
-			</a>
+			{% if job_state != "completed" %}
+				Job #{{ job.id }}: {{ job.filename }}
+			{% else %}
+				<a href="{% url 'invoices.views.job_edit' job.id %}" class="header-link">Job #{{ job.id }}: 
+					{% if job.filename %}
+						{{ job.filename }}
+					{% else %}
+						{{ job.customer_filename }}
+					{% endif %}
+				</a>
+			{% endif %}
+
 			</h2>
 			{% endblock page-heading %}
 			<h2 class="visible-print">Job #{{ job.id }}: 
@@ -23,15 +28,14 @@
 				{% endif %}
 			</h2>
 			<h3 class="job-state-button hidden-print">
-				<a href="{% url 'invoices.views.job_edit' job.id %}" class="hidden-print">
 				{% if job.job_state == "queued" %}
-					<span class="label label-warning state">{{ job.job_state }}</span>
+					<a href="{% url 'invoices.views.job_edit' job.id %}" class="hidden-print"><span class="label label-warning state">{{ job.job_state }}</span></a>
 				{% elif job.job_state == "running" %}
-					<span class="label label-success state">{{ job.job_state }}</span>
+					<a href="{% url 'invoices.views.job_edit' job.id %}" class="hidden-print"><span class="label label-success state">{{ job.job_state }}</span></a>
 				{% else %}
 					<span class="label label-info state">{{ job.job_state }}</span>
 				{% endif %}
-				</a>
+				
 			</h3>
 		</div>
 	</div>
