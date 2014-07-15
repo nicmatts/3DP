@@ -247,9 +247,9 @@ body {
 		background-color: #71CE71;
 	}
 
-	/*.job-state-button span.label-info:hover {
-		background-color: #7ADAF6;
-	}*/
+	.error-message {
+		color: red;
+	}
 }
 
 /******* styling for printed invoice *********/	

@@ -41,6 +41,16 @@
 						{{ form.job_cost }}</p>
 				</fieldset>
 			
+			{% if form.errors %}
+	<div class="alert alert-error">
+		<button type="button" class="close" data-dismiss="alert">×</button>
+		{% for field in form %} 
+			{% if field.errors %}
+			<p><span class="label label-warning">{{ field.label }}: {{ field.errors|striptags }}</span></p>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endif %}
 			<input type="submit" value="Submit" class="btn btn-primary hidden-print" id="invoice-submit" onclick="openWin()">
 		</form>
 	</div>
