@@ -1,6 +1,7 @@
 #from django.http import Http404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.core.mail import EmailMessage
 from django.shortcuts import get_object_or_404, render_to_response, redirect, render
 from django.template import RequestContext
 from django.utils import timezone
@@ -44,6 +45,13 @@ def job_edit(request, invoice_id):
 	if request.method=='POST':
 		form = InvoiceForm(request.POST, instance=invoice)
 		if form.is_valid():
+			if invoice.job_state == 'completed':
+				subject = "Your 3D print is completed"
+				message = "Hi, %s. Your 3D print is completed. The cost for this print is $%0.2f. You can pick it up at the Main Library Circulation Desk." % (invoice.customer_first_name, invoice.job_cost)
+				send_from = "nicmatts@gmail.com"
+				send_to = [invoice.customer_email]
+				email = EmailMessage(subject, message, send_from, send_to)
+				email.send()
 			form.save()
 			return redirect('job_detail', invoice_id)
 	else:
