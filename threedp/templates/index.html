@@ -96,7 +96,7 @@
 				<div class="box">
 					{% for note in urgent_notes %}
 						<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject}}</strong></a>  
-						{% for update in updates %}
+						{% for update in updates|slice:":1" %}
 							{% if update.note.id == note.id %}
 								<span class="label label-info updated">Updated</span>
 							{% endif %}
@@ -118,7 +118,7 @@
 					{% for note in unresolved_notes %}
 						{% if not note.urgent %}
 							<a href="{% url 'note_detail' note.id %}"><strong>{{ note.subject }}</strong></a>
-							{% for update in updates %}
+							{% for update in updates|slice:":1" %}
 								{% if update.note.id == note.id %}
 									<span class="label label-info updated">Updated</span>
 								{% endif %}

@@ -119,6 +119,10 @@ body {
 		max-height: 85px;
 	}
 
+	input#id_customer_email {
+		width: 320px;
+	}
+
 	h4.warning {
 	margin: 20px 0;
 	}
@@ -150,7 +154,7 @@ body {
 	}
 
 	.box {
-		padding: 10px 25px;
+		padding: 10px 25px 20px 25px;
 	}
 
 	.queued{

@@ -17,12 +17,14 @@ def all_notes(request):
     all_notes = Note.all_notes.all()
     unresolved_notes = Note.unresolved_notes.all()
     urgent_notes = Note.urgent_notes.all()
-    return render_to_response('notes/index.html', {'all_notes': all_notes, 'unresolved_notes': unresolved_notes, 'urgent_notes': urgent_notes}, context_instance=RequestContext(request))
+    updates = Update.objects.all()
+    return render_to_response('notes/index.html', {'all_notes': all_notes, 'unresolved_notes': unresolved_notes, 'urgent_notes': urgent_notes, 'updates': updates}, context_instance=RequestContext(request))
 
 @login_required
 def resolved_notes(request):
     resolved_notes = Note.resolved_notes.all()
-    return render_to_response('notes/resolved.html', {'resolved_notes': resolved_notes}, context_instance=RequestContext(request))
+    updates = Update.objects.all()
+    return render_to_response('notes/resolved.html', {'resolved_notes': resolved_notes, 'updates': updates}, context_instance=RequestContext(request))
 
 
 @login_required

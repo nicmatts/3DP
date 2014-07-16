@@ -16,6 +16,11 @@
 				<div class="box">
 					{% for note in urgent_notes %}
 							<a href="{% url 'note_detail' note.id %}"><strong>Message #{{ note.id }}</strong></a><br>
+							{% for update in updates|slice:":1" %}
+								{% if update.note.id == note.id %}
+									<span class="label label-info updated">Updated</span>
+								{% endif %}
+							{% endfor %}<br>
 							<strong>Subject</strong>: {{ note.subject}}<br>
 							<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
 							<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y, g:i" }}<br>
@@ -45,6 +50,11 @@
 			<div class="box">
 				{% for note in unresolved_notes %}
 					<a href="{% url 'note_detail' note.id %}"><strong>Message #{{ note.id }}</strong></a><br>
+					{% for update in updates|slice:":1" %}
+						{% if update.note.id == note.id %}
+							<span class="label label-info updated">Updated</span>
+						{% endif %}
+					{% endfor %}<br>
 					<strong>Subject</strong>: {{ note.subject}}<br>
 					<strong>Posted by</strong>: {{ user.first_name }} {{ user.last_name }}<br>
 					<strong>Posted on</strong>: {{ note.created|date:" l, M d, Y, g:i" }}<br>
