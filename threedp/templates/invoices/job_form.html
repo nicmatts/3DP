@@ -2,6 +2,17 @@
 			<form action="" method="post">{% csrf_token %}
 				<fieldset class="required-fields">
 					<h4 class="warning hidden-print"><span class="label label-danger">All fields in this section are required</span></h4>
+					{% if form.errors %}
+						<div class="alert alert-error">
+						<button type="button" class="close" data-dismiss="alert">×</button>
+						{% for field in form %} 
+							{% if field.errors %}
+								<p><span class="label label-warning">{{ field.label }}: {{ field.errors|striptags }}</span></p>
+							{% endif %}
+						{% endfor %}
+						</div>
+					{% endif %}
+
 					<p><label for="id_customer_first_name" class="front-page-label">Customer first name:</label>
 					    {{ form.customer_first_name }}</p>
 					<p><label for="id_customer_last_name" class="front-page-label">Customer last name:</label>
@@ -44,17 +55,7 @@
 					<p class="hidden-print"><label for="job_state" class="front-page-label">Job state:</label>
 						{{ form.job_state }}</p>
 				</fieldset>
-			
-			{% if form.errors %}
-	<div class="alert alert-error">
-		<button type="button" class="close" data-dismiss="alert">×</button>
-		{% for field in form %} 
-			{% if field.errors %}
-			<p><span class="label label-warning">{{ field.label }}: {{ field.errors|striptags }}</span></p>
-			{% endif %}
-		{% endfor %}
-	</div>
-{% endif %}
+		
 			<input type="submit" value="Submit" class="btn btn-primary hidden-print" id="invoice-submit" onclick="openWin()">
 		</form>
 	</div>
