@@ -111,9 +111,9 @@ class Invoice(models.Model):
 	#job information
 	sd_card_number = models.CharField(max_length=6, blank=True, null=True)
 	filename = models.CharField(max_length=200)
-	estimated_time = models.TimeField(auto_now_add=False, auto_now=False, blank=True, null=True)
+	estimated_time = models.CharField(max_length=10)
 	estimated_cost = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
-	actual_time = models.TimeField(auto_now_add=False, auto_now=False, blank=True, null=True)
+	actual_time = models.CharField(max_length=10, blank=True, null=True)
 	job_cost = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
 	description = models.TextField(blank=True, null=True)
 	job_state = models.CharField(max_length=10, choices=STATE)
