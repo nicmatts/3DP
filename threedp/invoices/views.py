@@ -47,8 +47,8 @@ def job_edit(request, invoice_id):
 		if form.is_valid():
 			if invoice.job_state == 'completed':
 				subject = "Your 3D print is completed"
-				message = "Hi, %s. Your 3D print is completed. The cost for this print is $%0.2f. You can pick it up at the Main Library Circulation Desk." % (invoice.customer_first_name, invoice.job_cost)
-				send_from = "ndsulibraries@gmail.com"
+				message = "Hi, %s. Your 3D print is completed. The cost for this print is $%0.2f. Please pick it up at the <a href='http://library.ndsu.edu/hours/'>Main Library Circulation Desk</a> within the next 14 days.  You will need to show your Bison ID to receive your print." % (invoice.customer_first_name, invoice.job_cost)
+				send_from = "ndsu.library.3dprint@ndsu.edu"
 				send_to = [invoice.customer_email]
 				email = EmailMessage(subject, message, send_from, send_to)
 				email.send()
